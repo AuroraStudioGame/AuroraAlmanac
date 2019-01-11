@@ -1,0 +1,68 @@
+/*defaults*/
+body{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /*background-color: #000000;*/
+}
+a{
+  text-decoration: none;
+  font-family: 'Monoton', cursive;
+  color: white;
+}
+header{
+  background-color: blue;
+  border-bottom: 2px solid black;
+}
+/*special*/
+.head{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.head img{
+  height: 20pt;
+}
+.head a{
+  font-size: 20pt;
+}
+.head a:hover{
+  color: black;
+}
+/*JS tabs*/
+#tabs{
+  display: grid;
+  grid-template-columns: repeat(2, 6% auto);
+}
+.tab {
+    display: block; /* выстраиваем вкладки в один ряд */
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.whiteborder {
+   border: 1px solid #707070;
+    border-right: 1px solid #fff;
+}
+.tabContent {
+    width: 100%;
+    background-color: blue;
+    padding: 10px;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+/*Content tab1*/
+.one{
+  background-color: white;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.important{
+  color: blue;
+  font-weight: 600;
+}

@@ -1,0 +1,21 @@
+/*large screens styles*/
+@media (min-width: 1200px) {
+  /*defaults*/
+  body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  img{
+    margin: 0;
+  }
+  a{
+    text-decoration: none;
+    font-family: 'Monoton', cursive;
+    color: #f90000
+  }
+  header{
+    background-color: #a050a0;
+  }
+  /*special*/
+}

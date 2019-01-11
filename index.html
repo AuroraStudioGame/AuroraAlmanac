@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>AlmanachCSS</title>
+    <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <header>
+      <div class="head">
+        <img src="images/logo100x100.png" alt="logo">
+        <a href="index.html">CSS</a>
+        <a href="page2.html">Bootstrap</a>
+        <a href="page3.html">JavaScript</a>
+        <a href="#">ReactJS</a>
+      </div>
+    </header>
+    <div class="tabs">
+      <input type="radio" id="tab1" name="tab-group">
+      <label for="tab1" class="tab-title">Position</label>
+      <input type="radio" id="tab2" name="tab-group">
+      <label for="tab2" class="tab-title">Text</label>
+      <input type="radio" id="tab3" name="tab-group">
+      <label for="tab3" class="tab-title">Before After</label>
+      <input type="radio" id="tab4" name="tab-group">
+      <label for="tab4" class="tab-title">Animation</label>
+      <div class="content">
+        <section class="tab1">
+          <h1>CSS Flex</h1>
+          <div class="tab-content">
+            <h2><span class="text__red">display: flex</span> - all blocks are horizontal</h2>
+            <p>flex property for child container change width arund other containers</p>
+            <div class="tutor__flex">
+              <div class="tutor__flex1">
+                <h2>First flex box</h2>
+                <p><span class="text__red">flex: 2</span> - div width for 2 flex boxes</p>
+              </div>
+              <div class="tutor__flex2">
+                <h2>Second flex box</h2>
+                <p>flex: 1 - div width for 1 flex box</p>
+              </div>
+              <div class="tutor__flex3">
+                <h2>Third flex box</h2>
+                <p>flex: 1 - div width for 1 flex box</p>
+              </div>
+            </div>
+            <p>order property for child container change element position in flex box</p>
+            <div class="tutor__flex">
+              <div class="tutor__flex2_1">
+                <h2>First flex box</h2>
+                <p>flex: 3 - div width for 3 flex boxes<br>order: 2 - place div to the second position</p>
+              </div>
+              <div class="tutor__flex2_2">
+                <h2>Second flex box</h2>
+                <p>flex: 1 - div width for 1 flex box<br>order: 1 - place div to the first position</p>
+              </div>
+              <div class="tutor__flex2_3">
+                <h2>Third flex box</h2>
+                <p>flex: 2 - div width for 2 flex boxes<br>order: 3 - place div to the third position</p>
+              </div>
+            </div>
+            <h2>Align items:</h2>
+            <p>Align-items: stretch - is a default value</p>
+            <p>Used for parent element change height of child flex elements<br>Align-items: flex-start</p>
+            <div class="tutor__flex tutor__flex__three">
+              <div class="tutor__flex1">
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+              <div class="tutor__flex2">
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariat</p>
+              </div>
+              <div class="tutor__flex3">
+                <h2>Third flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+            <p>Used for parent element change height of child flex elements<br>Align-items: flex-end</p>
+            <div class="tutor__flex tutor__flex__four">
+              <div class="tutor__flex1">
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+              <div class="tutor__flex2">
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariat</p>
+              </div>
+              <div class="tutor__flex3">
+                <h2>Third flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+            <p>Used for parent element change height of child flex elements<br>Align-items: center</p>
+            <div class="tutor__flex tutor__flex__five">
+              <div class="tutor__flex1">
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+              <div class="tutor__flex2">
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariat</p>
+              </div>
+              <div class="tutor__flex3">
+                <h2>Third flex box</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+            <h2>Flex-direction</h2>
+            <p>Used for parent element change horizontal position of child flex elements to vertical<br>Also column-reverse value make elements vertical upside down<br>flex-direction: column</p>
+            <div class="tutor__flex tutor__flex__six">
+              <div class="tutor__flex1">
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="tutor__flex2">
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+            <p>Used for parent element change vertical position of child flex elements to horizontal<br>Also row-reverse value make elements horizontal reverse<br>flex-direction: row-reverse</p>
+            <div class="tutor__flex tutor__flex__seven">
+              <div class="tutor__flex1">
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="tutor__flex2">
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+            <h2>Justify-content</h2>
+            <p>Used for parent element, change horizontal position of child elements to the left<br>justify-content: flex-start</p>
+            <div class="tutor__flex tutor__flex__eight">
+              <div>
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Third flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+            <p>Used for parent element, change horizontal position of child elements to the right<br>justify-content: flex-end</p>
+            <div class="tutor__flex tutor__flex__nine">
+              <div>
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Third flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+            <p>Used for parent element, change horizontal position of child elements to the center<br>justify-content: center</p>
+            <div class="tutor__flex tutor__flex__ten">
+              <div>
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Third flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+            <p>Used for parent element, change horizontal position of child elements by stretch without space between<br>justify-content: space-around</p>
+            <div class="tutor__flex tutor__flex__11">
+              <div>
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Third flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+            <p>Used for parent element, change horizontal position of child elements by stretch with space between<br>justify-content: space-between</p>
+            <div class="tutor__flex tutor__flex__12">
+              <div>
+                <h2>First flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Second flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <h2>Third flex box</h2>
+                <p>Lorem ipsum dolor sit amet.</p>
+              </div>
+            </div>
+            <h2>flex-basis</h2>
+            <p>Used for child element, same as width property used in flex<br>flex-basis</p>
+            <div class="tutor__flex">
+              <div class="flex__child__basis">
+                <h2>First flex box</h2>
+                <p>flex-basis: 100px</p>
+              </div>
+              <div class="flex__child__basis">
+                <h2>Second flex box</h2>
+                <p>flex-basis: 100px</p>
+              </div>
+              <div class="flex__child__basis">
+                <h2 >Third flex box</h2>
+                <p>flex-basis: 100px</p>
+              </div>
+            </div>
+            <h2>flex-wrap</h2>
+            <p>Used for adaptivity<br>flex-wrap: wrap - value make elements fall next string by minimazing the flex parent width<br>
+            flex-wrap: wrap-reverse - same wrap but falls from another side<br>
+          flex-wrap: nowrap - elements stay at one string</p>
+          </div>
+        </section>
+        <section class="tab2">
+          <div class="tab-content">
+            <h1>Text tab content</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </section>
+        <section class="tab3">
+          <div class="tab3__content">
+            <img src="images/css_tab3.jpg" alt="beforeAfter">
+            <h2>:After :Before<br />::After ::Before</h2>
+            <p>Pseudo-elements to add content outside the div by styles<br />
+            Works with "content" property.</p>
+            <div class="tab3__content__tut1">
+              <h1>h1 element used</h1>
+              <p>h1:after{content:"text after h1"}<br />
+              h1:before{content:"text before h1";}</p>
+            </div>
+            <div class="tab3__content__tut2">
+              <blockquote>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </blockquote>
+              <p><pre>blockquote::before{
+                content: open-quote;
+              }
+              .tab3__content__tut2 blockquote::after{
+                content: close-quote;
+              }</pre></p>
+            </div>
+            <div class="tab3__content__tut3">
+                <h2>Background-image before the text</h2>
+                <p><pre>
+                  p:before{
+                    content: '';
+                    background-image: url(../images/logo100x100.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 50px 50px;
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    align-text: center;
+                    border-radius: 100%;
+                  }
+                </pre></p>
+                <p><pre>
+                  p:before{
+                    content: '';
+                    background-image: url(../images/logo100x100.png);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 50px 50px;
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    align-text: center;
+                    border-radius: 100%;
+                  }
+                </pre></p>
+            </div>
+            <div class="tab3__content__tut4">
+              <div class="tab3__content__tut4__tut">
+                <h1>Beautiful Header</h1>
+                <p>
+                  Using :before for container with h1, h1's position is absolute, container's position relative.<br />
+                  Make line with background-color and height.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="tab4">
+          <div class="tab-content">
+            <h1>Text tab content</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

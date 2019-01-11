@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>AlmanachCSS</title>
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link rel="stylesheet" href="css/main3.css">
+  </head>
+  <body>
+    <header>
+      <div class="head">
+        <img src="images/logo100x100.png" alt="logo">
+        <a href="index.html">CSS</a>
+        <a href="page2.html">Bootstrap</a>
+        <a href="page3.html">JavaScript</a>
+      </div>
+    </header>
+    <div id="tabs">
+      <div class="tabs__label">
+        <div class="tab whiteborder">Basics</div>
+        <div class="tab">Tab 2</div>
+        <div class="tab">Tab 3</div>
+      </div>
+      <div class="tabs__content">
+        <div class="tabContent">
+          <div class="one">
+            <h2>JavaScript</h2>
+            <p>is a client side programming language.<br />
+            "document" - is main object</p>
+            <p>JavaScript con be added to html page with teg "script"</p>
+          </div>
+          <div class="one">
+            <h2>Variables</h2>
+            <p>There is no types in JS, all variables starts with "var"<br />
+              <span class="important">var name;</span><br />
+              You can add value with adding variable:<br />
+              <span class="important">var myNumber = 12;</span><br />
+              <span class="important">var myBool = true;</span><br />
+              <span class="important">var myString = "Hello world";</span><br />
+              Values can be added after creating the variable:<br />
+              <span class="important">var numUser;<br />
+                numUser = 1.05;
+              </span>
+            </p>
+            <p>
+              To show variable value on html page:<br />
+              <span class="important">document.write("Now you see value on html" + myString)</span>
+            </p>
+          </div>
+          <div class="one">
+            <h2>Math operations</h2>
+            <p>
+              + - * / - dasic operators<br />
+              <span class="important">
+                var x = 3;<br />
+                var y = 7;<br />
+                var result = x + y;</span> - variable for keep math operation result<br />
+                <span class="important">document.write(result);</span> - show result on html page<br />
+              <span class="important">reault += x;</span> - add x to result variable, also -= can be used<br />
+              <span class="important">result ++;</span> - increment result variable with 1 (-- also usable)<br />
+              You can use math operators to string (string contains numbers) by funclion "number"<br />
+              <span class="important">var a = "12";</span> - string variable because of ""<br />
+              <span class="important">var b = "24";</span> - string variable because of ""<br />
+              <span class="important">document.write(number(a)+number(b));</span> - equals 36, not 1224
+            </p>
+            <p>
+              boolean operators are >, < or ==<br />
+              <span class="important">var bool = a < b;</span> - if a < b, variable bool contains "true"<br />
+              Остаток от деления: "%"<br />
+              Необходимо например когда у нас есть цикл и на 7м его проходе надо что то сделать<br />
+              <span class="important">while(i % 7 != 0)</span> - когда остаток от деления на 7 станет 0, цикл завершится
+            </p>
+          </div>
+          <div class="one">
+            
+          </div>
+        </div>
+        <div class="tabContent">2</div>
+        <div class="tabContent">3</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="scripts/tab3.js"></script>
+  </body>
+</html>
