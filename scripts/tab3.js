@@ -29,3 +29,44 @@ function showTabsContent(b){
         tabContent[b].classList.add('show');
     }
 }
+document.getElementById('buttonAlert').onclick = function (event){
+  alert("hello user");
+}
+document.getElementById('buttonConfirm').onclick = function (event){
+  if(confirm("Are you sure?")){alert("yes you sure!");}else{alert("ok not");}
+}
+document.getElementById('buttonPrompt').onclick = function (event){
+  var userName1 = prompt("what's your name son?");
+  document.getElementById('promptName').value = userName1;
+}
+function btnClick(button){
+  alert("event works. Button html name is " + button.name);
+}
+var count = 0;
+function counter(element){
+  count++;
+  element.innerHTML="На эту строку наведено " +count+ " раз";
+}
+function valid(form){
+  var fail = false;
+  var adr_pattern = /[0-9a-z_]+@[0-9a-z_]+\.[a-z]{2,5}/i;
+  var Uname = form.elements.name.value;//document.getElementById('testFormName').value;
+  var Umail = form.elements.email.value;
+  var Upass = form.elements.password.value;
+  var Urepass = form.elements.repassword.value;
+  var Ugender = document.querySelector('input[name="state"]:checked').value;
+  if(Uname=="") fail = "Enter valid name sir";
+  else if(adr_pattern.test(Umail)==false) fail = "not valid email";
+  else if(Upass=="") fail = "Enter valid password";
+  else if(Urepass != Upass) fail = "Passwords are not equal";
+  if(fail) alert(fail);
+  else
+    alert("hello "+Uname+" "+Ugender);
+}
+//onclick="valid(document.getElementById('form1'))"
+var counter1 = 0;
+function timer1(){
+  counter1++;
+  document.getElementById('testCount').innerHTML = counter1;
+  setTimeout("timer1()", 1000);
+}

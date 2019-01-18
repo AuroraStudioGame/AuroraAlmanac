@@ -6,20 +6,25 @@
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <link rel="stylesheet" href="css/main3.css">
   </head>
-  <body>
+  <body onload="timer1()">
     <header>
       <div class="head">
         <img src="images/logo100x100.png" alt="logo">
         <a href="index.html">CSS</a>
         <a href="page2.html">Bootstrap</a>
         <a href="page3.html">JavaScript</a>
+        <a href="#">ReactJS</a>
       </div>
     </header>
     <div id="tabs">
       <div class="tabs__label">
         <div class="tab whiteborder">Basics</div>
-        <div class="tab">Tab 2</div>
-        <div class="tab">Tab 3</div>
+        <div class="tab">Popup windows</div>
+        <div class="tab">Events</div>
+        <div class="tab">Forms</div>
+        <div class="tab">Regular expressions</div>
+        <div class="tab">Таймеры</div>
+        <div class="tab">ООП</div>
       </div>
       <div class="tabs__content">
         <div class="tabContent">
@@ -27,7 +32,7 @@
             <h2>JavaScript</h2>
             <p>is a client side programming language.<br />
             "document" - is main object</p>
-            <p>JavaScript con be added to html page with teg "script"</p>
+            <p>JavaScript can be added to html page with tag "script"</p>
           </div>
           <div class="one">
             <h2>Variables</h2>
@@ -72,11 +77,334 @@
             </p>
           </div>
           <div class="one">
-            
+            <h2>Conditional statements</h2>
+            <p>
+              <span class="important">> < == >= <= !=</span> - operators for conditions<br />
+              <span class="important">if(x!=y){...}</span> - conditional statement<br />
+              <span class="important">else if(x==y){...}</span> - used when you need more conditions<br />
+              <span class="imporant">else{...}</span> - works if all if conditions are "false"<br />
+              Another conditional statement if "switch":<br />
+              <span class="important">var result = 3;</span><br />
+              <span class="important">switch(result){</span><br />
+                <span class="important">case 1: document.write("result is 1"); break;</span> - condition works if "result" = 1<br />
+                <span class="important">case 2: document.write("result is 2"); break;</span> - works if "result" is 2, "break" needs to out the statement<br />
+                <span class="important">case 3: document.write("result is 3"); break;</span><br />
+                <span class="important">default: document.write("result is > 3"); break;</span> - works if no one case statement not equals "result".
+            </p>
+            <p>
+              Last conditional statement is "?":<br />
+              <span class="important">x > y ? document.write("yes") : document.write("no");</span><br />
+              Using "&&" and "||" you can combine statements:<br />
+              <span class="important">if(x>y && bool==false){...}</span> - works if x>y AND bool==false<br />
+              <span class="important">if(x>y || bool==flase){...}</span> - works if x>y OR bool==flase<br />
+            </p>
+          </div>
+          <div class="one">
+            <h2>Cycles</h2>
+            <p>First cycle is "for"<br />
+              <span class="important">for(var i=0; i<10; i++){...}</span> - ten cycle walks<br />
+              When we use "if" inside cycle, after it must stay "continue" or "break":<br />
+              <span class="important">for(var i=0; i<10; i++){</span><br />
+                <span class="important">if(i%3==0) continue;</span> - all numbers %3 will be missed from cycle, result will be 0 1 2 4 5 7 8<br />
+                <span class="important">if(i==8) break;</span> - cycle stops when i == 8<br />
+                <span class="important">document.write(i + "br");}</span>
+            </p>
+            <p>
+              Next cycle is "while":<br />
+              <span class="important">while(x<10){</span><br />
+                <span class="important">document.write(x);</span><br />
+                <span class="important">x += 2;}</span> - increment "x" adding 2 by every cycle path<br />
+                Last cycle is "do{...}while(...);". This cycle works one time 100% (выполнится хотябы один раз обязательно)<br />
+                <span class="important">do{</span><br />
+                  <span class="important">document.write("it works!");}</span><br />
+                  <span class="important">while(x<100);</span><br />
+                  it means "do" will works always, but if "while" returns "false", second time cycle will stops
+            </p>
+          </div>
+          <div class="one">
+            <h2>Arrays</h2>
+            <p>
+              <span class="important">var arr = new array("str", 1.23, 7, false);</span> - how to create array<br />
+              no matter data types are stored in array<br />
+              Array call (обращение к массиву) makes with indexes [i] starts with 0 - arr[i]<br />
+              <span class="important">document.write(arr[0]+"br"+arr[3]);</span><br />
+              To know the length of array use poroperty "length":<br />
+              <span class="important">var al = arr.length;</span> - the number of array elements<br />
+              Usually arrays calls with cycles:<br />
+              <span class="important">for(var i=0; i<arr.length; i++){</span><br />
+                <span class="important">document.write(arr[i]+" , ")</span>
+            </p>
+            <p>
+              To assign value to array (присвоить значение) use index:<br />
+              <span class="important">for (var i=0; i<10; i++){</span><br />
+                <span class="important">arr[i] = i*3;}</span> - assign i*3 value to array place by index [i]<br />
+              You can find the sum of all array elements by cycle and += operator:<br />
+              <span class="important">var summ;</span><br />
+              <span class="important">for(var i=0; i<arr.length; i++){</span><br />
+                <span class="important">summ += arr[i];}</span>
+            </p>
+          </div>
+          <div class="one">
+            <h2>Multidimensional array</h2>
+            <p>
+              Array, those elements are another arrays.<br />
+              <span class="important">var arrDuo = new Array(arr1, arr2, arr3, ...);</span><br />
+              To call sub arrays values use dual [][]:<br />
+              <span class="important">document.write(arrDuo[0][3]);</span>
+            </p>
+          </div>
+          <div class="one">
+            <h2>Functions</h2>
+            <p>
+              If the part of code calls many times, use functions:<br />
+              <span class="important">function name(parameters){operations;}</span><br />
+              Sample writes text to html:<br />
+              <span class="important">function print(text){</span><br />
+                <span class="important">document.write(text);}</span><br />
+                Using function: just add as a parameter some string or string variable:<br />
+                <span class="important">print("Hello")</span>
+            </p>
+          </div>
+          <div class="one">
+            <h2>Global and local variables</h2>
+            <p>
+              Global variables works with all public code, local works only on some block of the code (like functins).<br />
+              Local variables initialize inside some code block.<span class="important">function ...(){var localVar = 10;}</span><br />
+              "localVar" is not visible outside the function. You can't use it outside function because it initialized inside.
+            </p>
           </div>
         </div>
-        <div class="tabContent">2</div>
-        <div class="tabContent">3</div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Popup windows</h2>
+            <p>
+              First method is "alert"<br />
+              <span class="important">alert("hello"+someVar);</span> - makes popup alert window<br />
+              <span class="important">document.getElementById('buttonId').onclick = funclion (event){</span> - adding "alert" method for clicking the button<br />
+              <span class="important">alert("Hello"+userId);}</span><br />
+              "alert" method open window with only one button "ok"<br />
+              Чтобы в alert записать что-либо с новой строки используется знак "/n"
+            </p>
+            <button type="button" name="button" id="buttonAlert">Alert</button>
+            <p>
+              Next method is "confirm"<br />
+              <span class="important">confirm("Are you sure?");</span> - can be used with click somthing too<br />
+              "confirm" open window with two buttons "cancel" and "ok"<br />
+              We can use conditional statements ("if") with this method:<br />
+              <span class="important">document.getElementById('buttonConfirm').onclick = function (event){</span><br />
+                <span class="important">if(confirm("Are you sure?")){</span><br />
+                  <span class="important">alert("yes you sure!");</span><br />
+                  <span class="important">}else{alert("ok not");}}</span>
+            </p>
+            <button type="button" name="button" id="buttonConfirm">Confirm</button>
+            <p>
+              Last popup window method is "prompt"<br />
+              <span class="important">prompt("message", defaultText);</span><br />
+              "prompt" contains a user textarea and can use some user information:<br />
+              <span class="important">var name = prompt("What's your name?");</span><br />
+              To example let's fill whe textarea with prompt's user data:<br />
+              <span class="important">document.getElementById('buttonPrompt').onclick = function (event){</span><br />
+                <span class="important">var userName1 = prompt("what's your name son?");</span><br />
+                <span class="important">document.getElementById('promptName').value = userName1;}</span>
+            </p>
+            <button type="button" name="button" id="buttonPrompt">Prompt</button>
+            <textarea name="name" rows="1" cols="50" id="promptName"></textarea>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Events and event handlers</h2>
+            <p>
+              Event - is a moment when something happens ( mouse click, window open ...)<br />
+              You can use events in html tegs:<br />
+              First create some function:<span class="important">function btnClick(button){alert("event works. Button html name is " + button.name);}</span><br />
+              Parameter "button" by using event in teg can be "this" (because event wrote inside button)<br />
+              &ltinput type="button" name="b" value="Click" <span class="important">onclick="btnClick(this)"</span>&gt<br />
+            </p>
+            <input type="button" name="bbb" value="onlick event" onclick="btnClick(this)">
+            <p>
+              "onload" event uses with teg "body" usually, make smth when page loaded <span class="important">&ltbody onload="alert("...")"&gt</span><br />
+              "onmouseover" event works when mouse goes over some element. In this sample used with "span" teg by &ltspan onmouseover="counter(this)"&gt:<br />
+              <span class="important">var count = 0;</span> - global variable to increment inside counter function<br />
+              <span class="important">function counter(element){</span><br />
+                <span class="important">count++;</span><br />
+                <span class="important">element.innerHTML="На эту строку наведено " + count + " раз";}</span> - function "innerHTML" позволяет написать html код внутрь объекта, к которому она ссылается<br />
+              <span style="background-color: black; color: white;" onmouseover="counter(this)">На эту строку наведено 0 раз</span>
+            </p>
+            <p>
+              Events mostly used:<br />
+              <span class="important">onchange</span> - uses with teg "select"<br />
+              <span class="important">onclick</span> - buttons, links, img ...<br />
+              <span class="important">onload</span> - uses with teg "body" or another (wors when element loaded)<br />
+              <span class="important">onmouseover</span> - with any teg<br />
+              <span class="important">onsubmit</span> - works with submit type in forms
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Work with forms</h2>
+            <p>
+              Usually it's better to use PHP with forms, because JS can be disabled on client.<br />
+              Event handler for forms is "onsubmit" - make smth when form submit button clicks<br />
+              <span class="important">&ltform action="" method="post" onsubmit="someFunction()"&gt</span> - "method" parameter used PHP only<br />
+              If user's browser disable JavaScript instead "submit" you can use "button", because submit reboot page when clicked.<br />
+              Чтобы обратиться к форме, можно написать <span class="important">document.forms.formName;</span><br />
+              Обращение к элементам формы можно задавать по аттрибуту "name" элемента <span class="important">var Pass = form.elements.passName.value;</span><br />
+              In sample form we will check form fields with function "valid", that take all form as a parameter:<br />
+              К функции "valid" обращаемся через onclick на кнопке: <span class="important">onclick="valid(document.forms.test)"</span><br />
+              Для проверки email используются регулярные выражения (подробнее в др. вкладке).<br />
+              <span class="important">function valid(form){</span> - in html form teg with onsubmit="valid(this)", or button teg with onclick="valid(document.getElementById('form'))"<br />
+              <span class="important">var fail = false;</span> - uses to mark not valid authorization<br />
+              <span class="important">var name = form.elements.name.value;</span> - calls to first input's name attribute value ("form.elements.name.value" = &ltinput name="value"...&gt)<br />
+              <span class="important">var email = form.elements.email.value;</span><br />
+              <span class="important">var password = form.elements.password.value;</span><br />
+              <span class="important">var repassword = form.elements.repassword.value;</span><br />
+              <span class="important">var state = form.elements.state.value;</span><br />
+              <span class="important">if(name=="" || name=" ")</span><br />
+              <span class="important">fail = "Type valid name";</span><br />
+              <span class="important">else if(adr_pattern.test(Umail)==false)</span><br />
+              <span class="important">fail = "not valid email";</span><br />
+              <span class="important">else if(password=="")</span><br />
+              <span class="important">fail = "Type valid password";</span><br />
+              <span class="important">else if(repassword != password)</span><br />
+              <span class="important">fail = "Passwords are not equal";</span><br />
+              <span class="important">else if(state=="")</span><br />
+              <span class="important">fail = "Choose your gender";</span><br />
+              <span class="important">if (fail)</span><br />
+              <span class="important">alert(fail);</span><br />
+              <span class="important">else</span><br />
+              <span class="important">window.location = "google.com";</span>
+            </p>
+            <form class="formtut" action="" method="post" name="test">
+              <h2>Valid function form</h2>
+              <label for="testFormName">Enter your name son:</label>
+              <input type="text" name="name" placeholder="Your name" id="testFormName"><br />
+              <label for="testFormEmail">Enter email</label>
+              <input type="email" name="email" placeholder="email" id="testFormEmail"><br />
+              <label for="testFormPassword">Password please:</label>
+              <input type="password" name="password" placeholder="Your pass" id="testFormPassword"><br />
+              <label for="testFormRepassword">Again please:</label>
+              <input type="password" name="repassword" placeholder="Your pass" id="testFormRepassword"><br />
+              <span>Gender:</span>
+              <input type="radio" name="state" value="male" id="male"><label for="male">male</label>
+              <input type="radio" name="state" value="female" id="female"><label for="female">female</label><br />
+              <input type="button" name="submit" value="Go for it" onclick="valid(document.forms.test)">
+            </form>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Регулярные выражения</h2>
+            <p>С помощью регулярных выражений можно производить проверку пользовательского ввода. К примеру на наличие определенных символов (@, _ ...).<br />
+              В основном применяются при проверки полей форм (email).<br />
+              Сначала создается переменная - паттерн с комбинацией символов для проверки:<br />
+              <span class="important">var adr_pattern = /[0-9a-z_]+@[0-9a-z_]+\.[a-z]{2,5}/i;</span><br />
+              В этом примере проверки email:<br />
+              <span class="important">/</span> - означает что вводиться может множество символов, не только один<br />
+              <span class="important">[0-9a-z_]</span> - перечисление возможных символов (числа от 0 до 9 и латинские буквы от а до z, также символ _), которые могут находиться до знака "@"<br />
+              <span class="important">+@</span> - после символов в [] должна стоять "собачка" - @<br />
+              <span class="important">+\.</span> - затем должна стоять одна единственная точка (\ - обозначает единство символа)<br />
+              <span class="important">{2,5}</span> - количество символов в [] перед! {} должно быть от 2 до 5<br />
+              <span class="important">/i</span> - означает что регистр текста не важен.
+            </p>
+            <p>
+              Для проверки регулярных выражений в формах используют функцию "test":<br />
+              <span class="important">if(adr_pattern.test(email)==false){...}</span><br />
+              Как альтернативный способ проверки email можно воспользоваться функцией "split":<br />
+              <span class="important">if(email.split('@').length-1 == 0){...}</span> - функция split разделяет строку (переменная email) на символы до @ и после @.<br />
+              Функция length вернет в этом случае 1 и отнимаем от нее 1 и сравниваем с 0 - так можно проверить строку на наличие определенного символа (например @).
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Таймеры</h2>
+            <p>
+              Похожи на циклы, которые выполняются с определенным периодом.<br />
+              <span class="important">var inter = setInterval("myFunction1()", 1000);</span> - функция setInterval присваивает заданный интервал выполнения чего-либо<br />
+              Первый аргумент - код или функция, которая будет вызываться. Второй аргумент - промежуток времени, в который будет вызываться первый аргумент (в миллисекундах!)<br />
+              <span class="important">var counter = 0;</span><br />
+              <span class="important">function myFunction1(){</span><br />
+                <span class="important">counter++;</span><br />
+                <span class="important">alert("Секунд прошло " + counter);</span><br />
+                <span class="important">if(counter==5) clearInterval(inter);}</span><br />
+                Функция clearInterval() остановит выполнение функции myFunction1() после 5и ее выполнений.
+            </p>
+            <p>
+              Вторая важная функция "setTimeout()" - она вызывается один раз через заданный отрезок времени.<br />
+              В отличие от setInterval, данная функция выполняется один раз с заданной задержкой (второй параметр)<br />
+              <span class="important">setTimeout("timer1()", 1000);</span> - каждую секунду функция ссылается на функцию timer1 и выполняет ее<br />
+              С загрузки страницы прошло <span id="testCount">-1</span> секунд.<br />
+              Для примера: к тегу body добавим нашу функцию через onload:<br />
+              <span class="important">&ltbody onload="timer1()"&gt</span><br />
+              Разместим на странице span с id="testCount", в котором будем отображать результат действия функции timer1<br />
+              А в скрипте напишем:<br />
+              <span class="important">var counter1 = 0;</span><br />
+              <span class="important">function timer1(){</span><br />
+              <span class="important">counter1++;</span><br />
+              <span class="important">document.getElementById('testCount').innerHTML = counter1;</span><br />
+              <span class="important">setTimeout("timer1()", 1000);}</span><br />
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Принципы ООП</h2>
+            <p>
+              Стандартные классы: Math:<br />
+              Класс "Math" содержит математические константы и функции. Обращаться можно так:<br />
+              <span class="important">var pi = Math.PI;</span> - присвоит переменной значение числа Пи<br />
+              Примеры нескольких функций класса Math:<br />
+              <span class="important">Math.abs(число)</span> - вернет модуль числа<br />
+              <span class="important">Math.sin(0.3)</span> - вернет синус угла (параметр задается в РАДИАНАХ)<br />
+              <span class="important">Math.random()</span> - вернет случайное число от 0 до 1<br />
+              <span class="important">Math.floor(5.3)</span> - округляет значение до наименьшего (вернет 5)<br />
+              <span class="important">Math.ceil(5.6)</span> - округляет значение до наибольшего (вернет 6)
+            </p>
+            <p>
+              Стандартные классы: Date:<br />
+              Содержит функции работы со временем.<br />
+              <span class="important">var date = new Date();</span> - создаст объект класса Date, переменная будет содержать полное текущее время и дату<br />
+              Далее чтобы узнать конкретную часть даты, используются функции:<br />
+              <span class="important">var text = "Текущий год" + date.getFullYear();</span> - вернет только текущий год<br />
+              <span class="important">...date.getMonth()</span> - вернет текущий месяц<br />
+              <span class="important">...date.getDate()</span> - вернет текущий день недели<br />
+              <span class="important">...date.getHours()</span> - вернет текущий час дня<br />
+              <span class="important">...date.getMinutes()</span> - вернет текущее количество минут<br />
+              <span class="important">...date.getSeconds()</span> - вернет количество секунд на часах<br />
+              Чтобы обратиться к какой-то конкретной дате, в параметрах конструктора Date необходимо указать эту дату полностью:<br />
+              <span class="important">var date1 = new Date(2007, 0, 15, 22, 40, 10)</span> - задает конкретную дату (год, месяц с 0!, день, час, минута, секунда)<br />
+              Установить конкретное время можно и для каждого элемента даты(год, день, час...):<br />
+              Для этого в функциях вместо "get" пишется "set"<br />
+              <span class="important">date1.setMinutes(45);</span>
+            </p>
+            <p>
+              Стандартные классы: Array:<br />
+              <span class="important">var arr = new Array(3, 5, 9, 14, 27);</span> - создаем объект класса, в качестве параметров - элементы массива<br />
+              Чтобы узнать количество элементов в массиве используется функция "length":<br />
+              <span class="important">text = "Длина массива" + arr.length;</span><br />
+              С помощью метода "join" можно вывести все элементы массива:<br />
+              <span class="important">arr.join(",");</span> - вернет все элементы массива как строку, записанные через символ, заданный параметром<br />
+              Сортировка массива выполняется методом "sort":<br />
+              <span class="important">(arr.sort()).join(",");</span> - вернет сортированную строку элементов массива по "возрастанию" по первому символу(тк join возвращает строку то по алфавиту)<br />
+              Также существует метод "split" он создает массив, разделяя строковую переменную по заданному параметру.
+            </p>
+            <p>
+              Стандартные классы: String:<br />
+              Для string не нужно создавать объект класса, он создается как обычная переменная:<br />
+              <span class="important">var string = "Небольшая строка";</span><br />
+              Чтобы узнать длину строки (количество символов) используется метод length:<br />
+              <span class="important">string.length;</span> - вернет количество элементов строчной переменной string<br />
+              <span class="important">string.toUpperCase();</span> - вернет строку с символами в верхнем регистре<br />
+              <span class="important">string.toLowerCase();</span> - вернет строку с символами в нижнем регистре<br />
+              <span class="important">string.substring(1, 5);</span> - метод для обрезки строки (в переметрах с какого элемента обрезать и до какого по номеру) этот метод переделывает строку в массив<br />
+              <span class="important">string.charAt(3);</span> - вернет 3ий символ строки (3ий по номеру как в массиве)<br />
+              <span class="important">string.indexOf("шая")</span> - вернет индекс (как в массиве) с которого в строке начинается сочетане символов (подстрока) "шая"<br />
+              Если в метод indexOf параметром передать символы, не существующие в строке, то он вернет "-1". Это удобно для поведения каких-нибудь проверок.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
     <script type="text/javascript" src="scripts/tab3.js"></script>
