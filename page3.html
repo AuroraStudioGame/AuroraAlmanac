@@ -11,8 +11,10 @@
       <div class="head">
         <img src="images/logo100x100.png" alt="logo">
         <a href="index.html">CSS</a>
+        <a href="page1.html">SASS</a>
         <a href="page2.html">Bootstrap</a>
         <a href="page3.html">JavaScript</a>
+        <a href="page4.html">jQuery</a>
         <a href="#">ReactJS</a>
       </div>
     </header>
@@ -25,6 +27,12 @@
         <div class="tab">Regular expressions</div>
         <div class="tab">Таймеры</div>
         <div class="tab">ООП</div>
+        <div class="tab">Исключения</div>
+        <div class="tab">Объекты</div>
+        <div class="tab">Классы</div>
+        <div class="tab">DOM</div>
+        <div class="tab">Ajax</div>
+        <div class="tab">Fetch</div>
       </div>
       <div class="tabs__content">
         <div class="tabContent">
@@ -46,6 +54,12 @@
               <span class="important">var numUser;<br />
                 numUser = 1.05;
               </span>
+            </p>
+            <p>
+              Существует три вида объявлений:<br />
+              <span class="important">var A;</span>//объявление переменной, инициализацтя необязательна<br />
+              <span class="important">let B;</span>//объявление локальной переменной в области видимости блока<br />
+              <span class="important">const C;</span>//объявление именованной константы, доступной только для чтения<br />
             </p>
             <p>
               To show variable value on html page:<br />
@@ -405,8 +419,333 @@
             </p>
           </div>
         </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Обработка исключений</h2>
+            <p>
+              Инструкция throw используется, чтобы выбросить исключение, а инструкция try...catch, чтобы его обработать.<br />
+              <span class="important">throw expression;</span> - Используйте инструкцию throw, чтобы выбросить исключение. При выбросе исключения нужно указать выражение, содержащее значение, которое будет выброшено<br />
+              <span class="important">throw "Error2";</span> - выбросить исключение типа string<br />
+              <span class="important">throw 42;</span> - выбросить исключение типа number<br />
+              <span class="important">throw true;</span> - выбросить исключение типа boolean<br />
+              <span class="important">throw { toString: function() { return "I'm an object!"; } };</span> - выбросить исключение типа object<br />
+              В следующем примере объект UserException выбрасывается как исключение:<br />
+              <span class="important">function UserException (message) {</span><br />
+              <span class="important">this.message = message;</span><br />
+              <span class="important">this.name = "UserException";}</span><br />
+              <span class="important">UserException.prototype.toString = function () {</span><br />
+              <span class="important">return this.name + ': "' + this.message + '"';}</span><br />
+              <span class="important">throw new UserException("Value too high");</span>
+            </p>
+            <p>
+              Инструкция try...catch<br />
+              Инструкция try...catch состоит из блока try, который содержит одну или несколько инструкций, и блок catch, которые содержит инструкции, определяющие порядок действий при выбросе исключения в блоке try. Иными словами, если в блоке try будет выброшено исключение, то управление будет передано в блок catch. Если в блоке try не возникнет исключений, то блок catch будет пропущен. Блок finally будет выполнен после окончания работы блоков try и catch, вне зависимости от того, было ли выброшено исключение.<br />
+              В следующем примере вызывается функция getMonthName, которая возвращает название месяца по его номеру. Если месяца с указанным номером не существует, то функция выбросит исключение "InvalidMonthNo", которое будет перехвачено в блоке catch:<br />
+              <span class="important">function getMonthName(mo) {</span><br />
+              <span class="important">mo = mo - 1;</span>// Adjust month number for array index (1 = Jan, 12 = Dec)<br />
+              <span class="important">var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul",
+                "Aug","Sep","Oct","Nov","Dec"];</span><br />
+              <span class="important">if (months[mo]) {</span><br />
+              <span class="important">return months[mo];</span><br />
+              <span class="important">} else {</span><br />
+              <span class="important">throw "InvalidMonthNo";}}</span>//throw keyword is used here<br />
+              <span class="important">try {</span>// statements to try<br />
+              <span class="important">monthName = getMonthName(myMonth);}</span>// function could throw exception<br />
+              <span class="important">atch (e) {</span><br />
+              <span class="important">monthName = "unknown";</span><br />
+              <span class="important">logMyErrors(e);}</span>// pass exception object to error handler -> your own<br />
+              Используйте блок catch, чтобы обработать исключения, сгенерированные в блоке try.<br />
+              <span class="important">catch (catchID) { statements }</span><br />
+              JavaScript создает идентификатор catchID, которому присваивается перехваченное исключение, при входе в блок catch; данный идентификатор доступен только в пределах блока catch и уничтожается при выходе из него.<br />
+              <span class="important">try {</span><br />
+                <span class="important">throw "myException"</span><br />
+                <span class="important">} catch (e) {</span><br />
+                <span class="important">console.error(e);}</span><br />
+            </p>
+            <p>
+              Блок finally<br />
+              Блок finally содержит код, который будет выполнен после окончания работы блоков try и catch, но до того, как будет выполнен код, который следует за инструкцией try...catch. Блок finally выполняется вне зависимости от того, было ли выброшено исключение. Блок finally выполняется даже в том случае, если исключение не перехватывается в блоке catch.<br />
+              В следующем примере открывается файл, затем в блоке try происходит вызов функции writeMyFile, который может выбросить исключение. Если возникает исключение, то оно обрабатывается в блоке catch. В любом случае файл будет закрыт функцией closeMyFile, вызов которой находится в блоке finally.<br />
+              <span class="important">openMyFile();</span><br />
+              <span class="important">try {</span><br />
+              <span class="important">writeMyFile(theData);</span><br />
+              <span class="important">} catch(e) {</span><br />
+              <span class="important">handleError(e);</span><br />
+              <span class="important">} finally {</span><br />
+              <span class="important">closeMyFile();}</span><br />
+              Если блок finally возвращает значение, то данное значение становится возвращаемым значением всей связки try-catch-finally. Значения, возвращаемые блоками try и catch, будут проигнорированы.
+            </p>
+          </div>
+          <div class="one">
+            <h2>Использование объекта Error</h2>
+            <p>
+              В зависимости от типа ошибки вы можете использовать свойства name и message, чтобы получить более подробную информацию. Свойство name содержит название ошибки (например, DOMException или Error), свойство message — описание ошибки.<br />
+              Если вы выбрасываете собственные исключения, то чтобы получить преимущество, которое предоставляют эти свойства (например, если ваш блок catch не делает различий между вашими исключениями и системными), используйте конструктор Error. <br />
+              <span class="important">function doSomethingErrorProne () {</span><br />
+              <span class="important">if ( ourCodeMakesAMistake() ) {</span><br />
+              <span class="important">throw ( new Error('The message') );</span><br />
+              <span class="important">} else {</span><br />
+              <span class="important">doSomethingToGetAJavascriptError();}}</span><br />
+              <span class="important">try {</span><br />
+              <span class="important">doSomethingErrorProne();</span><br />
+              <span class="important">} catch (e) {</span><br />
+              <span class="important">console.log(e.name);</span>// 'Error'<br />
+              <span class="important">console.log(e.message);}</span>// 'The message' или JavaScript error message
+            </p>
+          </div>
+          <div class="one">
+            <h2>Объект Promise</h2>
+            <p>
+              Начиная с ECMAScript2015, JavaScript поддерживает объект Promise, который используется для отложенных и асинхронных операций.<br />
+              Объект Promise может находиться в следующих состояниях:<br />
+              <ul>
+                <li>ожидание (pending): начальное состояние, не выполнено и не отклонено.</li>
+                <li>выполнено (fulfilled): операция завершена успешно.</li>
+                <li>отклонено (rejected): операция завершена с ошибкой.</li>
+                <li>заданный (settled): обещание выполнено или отклонено, но не находится в состоянии ожидания.</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Объекты</h2>
+            <p>
+              Объекты назначаются переменной как и любые другие типы.<br />
+              Для создания объекта используются фигурные скобки {}<br />
+              <span class="important">let spaceship = {};</span>// создание пустого объекта<br />
+              Данные в объекте хранятся как "ключ" - "значение". Значение ключа может быть любого типа или функцией.
+            </p>
+            <img src="images/JStab7.svg" alt="objectPic">
+            <p>
+              Данные в объекте - это свойства и записываются они через запятую.<br />
+              Для доступа к свойствам объекта необходимо использовать точку:<br />
+              <span class="important">spaceship.color;</span>//вернет 'silver'<br />
+              <span class="important">var paint = spaceship.color;</span>
+            </p>
+            <p>
+              Второй способ получить значение свойства объекта - через []<br />
+              Этот способ необходимо использовать тогда, когда свойство объекта записано с пробелом (нельзя spaceship.Active Mission, но можно spaceship['Active Mission'])<br />
+              Удобно использовать в функциях:<br />
+              <span class="important">let returnAnyProp = (objectName, propName) =></span><br />
+              <span class="important">objectName[propName];</span><br />
+              <span class="important">returnAnyProp(spaceship, color);</span>//вернет 'silver'<br />
+            </p>
+            <p>
+              После создания объекта можно добавлять ему новые свойства или задавать новые значения сущестующим свойствам:<br />
+              Но если объект создан как константа (const objname = {type: 'one'}), то мутировать его нельзя (objname = {type:two}), но добавить новые свойства и переназначить их можно (через точку).<br />
+              <span class="important">spaceship['Fuel Type'] = 'vegetable oil';</span><br />
+              <span class="important">spaceship.color = 'gold';</span><br />
+              Также можно удалять свойства из объектов используя оператор delete:<br />
+              <span class="important">delete spaceship.mission;</span>
+            </p>
+            <p>
+              Метод - это данные в объекте, которые являются функцией.<br />
+              Свойства - то что содержится в объекте (как переменные в классе), а методы это то что объект может делать (как и методы в классе)<br />
+              Метод в ES5:<br />
+              <span class="important">const alienShip = {</span><br />
+              <span class="important">invade: function () {</span><br />
+              <span class="important">console.log('Hello!')}</span><br />
+              <span class="important">};</span><br />
+              Метод в ES6:<br />
+              <span class="important">const alienShip = {</span><br />
+              <span class="important">invade () {</span><br />
+              <span class="important"> console.log('Hello!')}</span><br />
+              <span class="important">};</span><br />
+              Вызов метода производится как и свойства - через точку:<br />
+              <span class="important">alienShip.invade();</span><br />
+              Методы как и свойства в объекте должны записываться через запятую.<br />
+            </p>
+            <p>
+              Объекты можно вкладывать друг в друга, создавая сложные конструкции<br />
+              <span class="important">const spaceship = {</span><br />
+              <span class="important">telescope: {</span><br />
+              <span class="important">model: '91031-XLT',</span><br />
+              <span class="important">focalLength: 2032</span><br />
+              <span class="important">},</span><br />
+              <span class="important">nanoelectronics: {</span><br />
+              <span class="important">computer: {</span><br />
+              <span class="important">terabytes: 100,</span><br />
+              <span class="important">monitors: 'HD'</span><br />
+              <span class="important">},</span><br />
+              <span class="important">'back-up': {</span><br />
+              <span class="important">battery: 'Lithium',</span><br />
+              <span class="important">terabytes: 50</span><br />
+              <span class="important">}</span><br />
+              <span class="important">}</span><br />
+              <span class="important">};</span><br />
+              Обращение к свойствам сложных объектов производится так:<br />
+              <span class="important">spaceship.nanoelectronics['back-up'].battery;</span><br />
+            </p>
+            <p>
+              Объекты передаются по ссылке. Это означает, что когда мы передаем переменную, назначенную объекту, в функцию в качестве аргумента, компьютер интерпретирует имя параметра как указывающее на пространство в памяти, содержащее этот объект.<br />
+              <span class="important">let paintIt = obj => {</span><br />
+              <span class="important">obj.color = 'glorious gold'</span><br />
+              <span class="important">};</span><br />
+              <span class="important">paintIt(spaceship);</span><br />
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Классы</h2>
+            <p>
+              Классы необходимы для упрощения создания множества однотипных объектов.<br />
+              <span class="important">class Dog {</span><br />
+              <span class="important">constructor(name) {</span><br />
+              <span class="important">this._name = name;</span><br />
+              <span class="important">this._behavior = 0;</span><br />
+              <span class="important">}</span><br />
+              <span class="important">get name() {</span><br />
+              <span class="important">return this._name;</span><br />
+              <span class="important">}</span><br />
+              <span class="important">}</span><br />
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Меняем свойства СSS стилей</h2>
+            <p>
+              Взять (get) стили элемента:<br />
+              <span class="important">var el = document.querySelector('div');</span><br />
+              <span class="important">var style = window.getComputedStyle ? getComputedStyle(el, null) : el.currentStyle;</span>// getComputedStyle for modern browsers, currentStyle for IE<br />
+              <span class="important">console.log(style.backgroundColor);</span>// reading properties<br />
+              <span class="important">console.log(style['-webkit-text-size-adjust']);</span>/ reading properties containing hyphens<br />
+            </p>
+            <p>
+              Изменить (set) стили элемента можно ч помощью свойства style объекта:<br />
+              <span class="important">var el = document.querySelector('div');</span><br />
+              <span class="important">el.style.backgroundColor = 'green';</span><br />
+              <span class="important">el.style.display = 'none';</span><br />
+              <span class="important">el.style['border-radius'] = '5px';</span><br />
+              Можно добавить сразу несколько стилей за один раз с помощью cssText:<br />
+              <span class="important">el.style.cssText += 'background: green; display: none;';</span>
+            </p>
+            <p>
+              Функция для легкого добавления стилей. Эта вспомогательная функция соответствует методу jQuery $ .css (obj).<br />
+              <span class="important">function css(el, styles) {</span><br />
+              <span class="important">for (var property in styles)</span><br />
+              <span class="important">el.style[property] = styles[property];</span><br />
+              <span class="important">}</span><br />
+              Пример ее использования:<br />
+              <span class="important">var el = document.querySelector('div');</span><br />
+              <span class="important">css(el, { background: 'green', display: 'none', 'border-radius': '5px' });</span><br />
+            </p>
+            <h2>Обработка событий нажатия клавиатуры</h2>
+            <p>
+              Чтобы получить код клавиши, требуется присоединение обработчика событий к любому действию клавиатуры. Код ключа сообщается об объекте события, полученном функцией обработчика.<br />
+              <span class="important">function handler(e) {</span>// event handler function<br />
+              <span class="important">var key = window.event ? e.keyCode : e.which;</span><br />
+              <span class="important">console.log(key, e.shiftKey, e.altKey, e.ctrlKey);</span><br />
+              <span class="important">}</span><br />
+              <span class="important">if (document.attachEvent) document.attachEvent('onkeydown', handler);</span>// attach handler to the keydown event of the document<br />
+              <span class="important">else document.addEventListener('keydown', handler);</span><br />
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Ajax</h2>
+            <p>
+              Ajax — это технология, позволяющая странице взаимодействовать с сервером при помощи JavaScript.<br />
+              Например, когда мы отправляем форму на сайте, значения полей собираются и формируется HTTP запрос, который отправляет данные на сервер. Когда вы постите твит в Твиттер, ваш Твиттер-клиент создает HTTP запрос к серверу API Твиттера и обновляет страницу на основании ответа сервера.<br />
+              Технология Ajax позволяет отправить данные на сервер без перезагрузки страницы.<br />
+              С помощью Ajax создается связка JS с PHP, и множество функций (комментирование, поставить лайк, добавить в друзья) выполняются без перезагрузки.
+            </p>
+            <h2>Работа с Ajax</h2>
+            <p>
+              Ajax отправляет данные в PHP и далее на сервер, поэтому необходимо иметь локальный сервер или хостинг.<br />
+              На локальном сервере в папке сайта необходимо создать папку "WWW" (хороший тон) и в ней всю структуру сайта с index.php<br />
+              Работать Ajax будет именно с этим PHP файлом.
+            </p>
+            <h2>Загрузка данных на страницу ("Полный контроль")</h2>
+            <p>
+              "Полный контроль" - это использование метода .ajax для отправки данных на сервер, параметры описаны ниже.<br />
+              Для примера в body нашего PHP файла создадим два элемента:<br />
+              <span class="important">&ltp id="load" style="cursor: pointer;"&gtЗагрузить данные&lt/p&gt</span>//будет какбы кнопкой для срабатывания Ajax<br />
+              <span class="important">&ltdiv id="information"&gt &lt/div&gt</span>//блок куда будут подгружаться данные
+            </p>
+            <div id="ajaxTut">
+              <p id="load" style="cursor: pointer; border: 1px solid red;">Загрузить данные</p>
+              <div id="information"></div>
+            </div>
+            <p>
+              Создадим в папке проекта файл contentForAjax.php для обработки запросов и затем в скрипте пишем:<br />
+              <span class="important">$(document).ready(function(){</span>//скрипт будет работать после загрузки страницы<br />
+              <span class="important">$("#load").bind("click", function(){</span>//берем в переменную наш элемент с id="load", метод ".bind" - это обработчик событий<br />
+              <span class="important">$.ajax({</span>//вызываем метод ajax у нашей переменной, он выполняет все действия Ajax (отправка данных, получение итд)<br />
+              <span class="important">url: "contentForAjax.php",</span>//параметры метода ajax (через запятую)<br />
+              <span class="important">type: "POST",</span><br />
+              <span class="important">data: ({name: 'admin', number: 5}),</span><br />
+              <span class="important">dataType: "html",</span><br />
+              <span class="important">beforeSend: funcBefore,</span>//необходимо будет описать функции funcBefore() и другие в скрипте(есть в js файле)<br />
+              <span class="important">success: funcSuccess</span><br />
+              <span class="important">});</span><br />
+              <span class="important">});</span><br />
+              <span class="important">});</span><br />
+              В файле "contentForAjax.php" напишем обработчик:<br />
+              <span class="important">&lt?php</span><br />
+              <span class="important">sleep(2);</span>//затормаживаем отправку данных чтобы показалась функция funcBefore()<br />
+              <span class="important">echo "Данные:строчка - ".$_POST['name'].", цифра - ".$_POST['number'];</span>//то что отобразится в div#information<br />
+              <span class="important">?&gt</span><br />
+            </p>
+            <p>
+              Основные параметры метода .ajax. Параметры data и beforeSend не обязательно указывать:<br />
+              <span class="important">url: "page.php",</span> - на какую страницу будут отправлены данные<br />
+              <span class="important">type: "POST",</span> - то каким образом мы будем отправлять данные (POST или GET)<br />
+              <span class="important">data: ({имяПеременной1: "значение1", имяПеременной2: 5}),</span> - с помощью этого параметра передаются переменые<br />
+              <span class="important">dataType: "html",</span> - определяет какого типа данные передаются (текст или html)<br />
+              <span class="important">beforeSend: имяФункции,</span> - то что срабатывает до того, как придет ответ от страницы об успешной отправке (функция выполняется, пока идет отправка данных, например гифка загрузки)<br />
+              <span class="important">success: имяФункцииУспешнойОтправки,</span> - вызывается, когда отправка успешно проведена и получен ответ от страницы<br />
+            </p>
+            <h2>Формат JSON</h2>
+            <p>
+              С помощью JSON можно передавать и получать массивы с сервера.<br />
+              Для примера создадим в html два selectа со списком стран и городов:
+            </p>
+            <label>Укажите страну</label>
+            <select id="ajaxTut2" name="country">
+              <option value="0" selected="selected"></option>
+              <option value="1">Америка</option>
+              <option value="2">Франция</option>
+            </select>
+            <label>Города</label>
+            <select name="city">
+              <option value="0"></option>
+            </select>
+            <p>
+              С помощью ajax, jQuery и PHP по выбору страны, во втором селекте будут появляться города этой страны.<br />
+              Метод JSON.parse() кодирует PHP массив в формат доступный JavaScript.<br />
+              В примере используем другой метод отправки данных на сервер (не "полный контроль" .ajax) это метод get. Пишем скрипт:<br />
+              <span class="important">$(document).getElementById('ajaxTut2').ready(function(){</span><br />
+              <span class="important">$("select[name='country']").bind("change", function(){</span>//функция выполнится при изменения значения поля select[name='country']<br />
+              <span class="important">$.get("contentForAjax.php", {country: $("select[name='country']").val()}, function(data){</span><br />
+              <span class="important">data = JSON.parse(data);</span>//расшифровываем полученный из php файла ответный массив городов<br />
+              <span class="important">$("select[name='city']").empty();</span>//очищаем селект с городами перед наполнением его массивом новых городов<br />
+              <span class="important">for(var id in data){</span><br />
+              <span class="important">$("select[name='city']").append($("&ltoption value='" + id "'&gt" + data[id] + "&lt/option&gt"));</span><br />
+              <span class="important">}</span><br />
+              <span class="important">});</span><br />
+              <span class="important">});</span><br />
+              <span class="important">});</span><br />
+              В PHP файле добави две строчки для созврата массива городов во второй селект:<br />
+              <span class="important">if($_GET["country"] == 1) echo json_encode(array("1" => "Вашингтон", "2" => "Сиэтл"));</span><br />
+              <span class="important">else if($_GET["country"] == 2) echo json_encode(array("3" => "Париж", "4" => "Марсель"));</span><br />
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="one">
+            <h2>Fetch API</h2>
+            <p>
+              https://developer.mozilla.org/ru/docs/Web/API/Fetch_API
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script type="text/javascript" src="scripts/tab3.js"></script>
   </body>
 </html>

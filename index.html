@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>AlmanachCSS</title>
+    <title>AlmanacCSS</title>
     <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -12,8 +12,10 @@
       <div class="head">
         <img src="images/logo100x100.png" alt="logo">
         <a href="index.html">CSS</a>
+        <a href="page1.html">SASS</a>
         <a href="page2.html">Bootstrap</a>
         <a href="page3.html">JavaScript</a>
+        <a href="page4.html">jQuery</a>
         <a href="#">ReactJS</a>
       </div>
     </header>
@@ -28,6 +30,8 @@
       <label for="tab4" class="tab-title">Collapse</label>
       <input type="radio" id="tab5" name="tab-group">
       <label for="tab5" class="tab-title">Animation</label>
+      <input type="radio" id="tab6" name="tab-group">
+      <label for="tab6" class="tab-title">ResetCSS</label>
       <div class="content">
         <section class="tab1">
           <h1>CSS Flex</h1>
@@ -230,6 +234,135 @@
             flex-wrap: wrap-reverse - same wrap but falls from another side<br>
           flex-wrap: nowrap - elements stay at one string</p>
           </div>
+          <h1>box-sizing</h1>
+          <div class="tab-content">
+            <h2>-webkit-box-sizing   -moz-box-sizing</h2>
+            <p>
+              Когда вы устанавливаете box-sizing: border-box; для элемента, поля и границы самого элемента(margin, border, padding) больше не увеличат его ширину.
+            </p>
+            <div class="tab1__tut2__box1">
+              <p>
+                .box1 {<br />
+              width: 500px;<br />
+              margin: 20px auto;<br />
+              -webkit-box-sizing: border-box;<br />
+              -moz-box-sizing: border-box;<br />
+              box-sizing: border-box;}<br />
+              У этого бокса нет отступов и границ, но он такой же длины
+              </p>
+            </div>
+            <div class="tab1__tut2__box2">
+              <p>
+                .box2 {<br />
+                width: 500px;<br />
+                margin: 20px auto;<br />
+                padding: 50px;<br />
+                border: solid blue 10px;<br />
+                -webkit-box-sizing: border-box;<br />
+                -moz-box-sizing: border-box;<br />
+                box-sizing: border-box;}<br />
+                У этого бокса есть отступы и границы, но длина такая же.
+              </p>
+            </div>
+            <p>
+              Поскольку так гораздо лучше, некоторые авторы хотят, чтобы все элементы на всех страницах всегда работали таким образом. Для этого нужно установить следующий CSS для страниц:<br />
+              <span class="code__text">
+                * {<br />
+                -webkit-box-sizing: border-box;<br />
+                -moz-box-sizing: border-box;<br />
+                box-sizing: border-box;}<br />
+              </span>
+              Это гарантирует, что размеры всех элементов могут быть определены более интуитивно.<br />
+              Поскольку box-sizing достаточно новое свойство, вы должны использовать -webkit- и -moz- префиксы, как я в этих примерах. Эта техника позволяет реализовывать экспериментальные возможности в конкретных браузерах. Кроме того, имейте в виду, что один из них это IE8 и старше.
+            </p>
+          </div>
+          <h1>Position:</h1>
+          <div class="tab-content">
+            <h2>Position: static;</h2>
+            <p>static является значением по умолчанию. Элемент с position: static; отображается как обычно и не будет позиционироваться каким-либо специальным способом, он просто плюхнется вниз.</p>
+            <h2>Position: relative;</h2>
+            <div>
+            <div class="tab1__tut3__box1">
+              relative ведет себя в точности как static но лишь до тех пор, пока вы не добавите некоторые дополнительные свойства.
+            </div>
+            <div class="tab1__tut3__box2">
+              Добавление свойств top, right, bottom, и left изменяет позицию элемента, сдвигая его в ту или иную сторону относительно его начального расположения. Другой контент не будет перестраиваться, чтобы заполнить любое свободное пространство, оставленное этим элементом.
+            </div>
+            </div>
+            <p class="code__text">
+              .relative1 {<br />
+              position: relative;}<br />
+              .relative2 {<br />
+              position: relative;<br />
+              top: -20px;<br />
+              left: 20px;<br />
+              background-color: white;<br />
+              width: 500px;}<br />
+            </p>
+            <h2>Position: fixed;</h2>
+            <p>Фиксированное позиционирование элемента относительно окна браузера таково, что он всегда занимает одно и тоже место даже при прокрутке страницы, словно он приклеен к экрану. Также как и для relative, дополнительные свойства top, right, bottom, и left для данного позиционирования будут работать.</p>
+            <p class="code__text">
+              .fixed {<br />
+              position: fixed;<br />
+              bottom: 0;<br />
+              right: 0;<br />
+              width: 200px;<br />
+              background-color: white;}<br />
+            </p>
+            <p>Фиксированный элемент не оставляет за собой свободное пространство на странице, где он был расположен.</p>
+            <h2>Position: absolute;</h2>
+            <p>absolute наиболее сложное значение позиционирования. absolute ведет себя как fixed за исключением того, что позиционирование отсчитывается относительно ближайшего расположенного родителя а не относительно окна браузера. Если элемент абсолютно позиционирован и не имеет родителя,то он использует тело документа и продолжает двигатся вместе со всей страницей при скроллинге. Помните , что "позиционированный" элемент - это элемент с любым значением свойства position кроме значения static.</p>
+              <div class="tab1__tut3__box3">
+                <p>Этот элемент относительно позиционированный. Если бы элемент имел значение position: static; то его асболютно позиционированный ребенок убежал бы и стал позиционироваться уже относительно тела документа.</p>
+                <p class="code__text">
+                  position: relative;<br />
+                  width: 600px;<br />
+                  height: 400px;
+                </p>
+                <div class="tab1__tut3__box4">
+                  <p>Этот элемент абсолютно позиционированный. Он позиционирован относительно его родителя.</p>
+                  <p class="code__text">
+                    position: absolute;<br />
+                    top: 120px;<br />
+                    right: 0;<br />
+                    width: 300px;<br />
+                    height: 200px;
+                  </p>
+                </div>
+              </div>
+          </div>
+          <h1>float clear clearfix</h1>
+          <div class="tab-content">
+            <p>float обертывает текст вокруг изображения.<br />
+              <span class="code__text">
+                img {<br />
+                float: right;<br />
+                margin: 0 0 1em 1em;}
+              </span>
+              <img src="images/logo100x100.png" alt="logo" class="tab1__tut4__img">
+            </p>
+            <h2>Clear</h2>
+            <p class="code__text">
+              .box {<br />
+              float: left;<br />}<br />
+              .after-box {<br />
+              clear: left;}
+            </p>
+            <div class="tab1_tut4__box1">
+              я поплавок
+            </div>
+            <div class="tab1_tut4__box2">
+              Использовав clear мы сейчас сдвинули эту секцию вниз под всплывающий div. Вы можете использовать значение left для очистки всплывающих элементов слева. Также вы можете использовать значения right и both.
+            </div>
+            <h2>Clearfix</h2>
+            <p>Используется когда картинка с float свойством больше по размеру чем блок с текстом и выходит за его границы<br />
+              <span class="code__text">
+                .clearfix {<br />
+                overflow: auto;}<br />
+              </span>
+              Свойство overflow подгонит размер блока текста под размер картинки.
+            </p>
+          </div>
         </section>
         <section class="tab2">
           <div class="tab-content">
@@ -311,6 +444,48 @@
           <div class="tab-content">
             <h1>Text tab content</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </section>
+        <section class="tab6">
+          <h1>Reset CSS</h1>
+          <div class="tab-content">
+            <p>Эти стили помогут обнулить стандартные стили CSS для последующего переназначения.</p>
+            <p>
+              Сначала обнулем поля и отступы:<br />
+              <span class="code__text">
+                body, html, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul,<br />
+                ol, li, dl, dt, dd, form, a, fieldset, input, th, td{<br />
+                  margin: 0; padding: 0; border: 0; outline: none;}<br />
+              </span>
+              Сделаем заголовки одним размером для отображения в разных браузерах:<br />
+              <span class="code__text">
+                h1, h2, h3, h4, h5, h6{<br />
+                  font-size: 100%;}<br />
+              </span>
+              Далее определим поля и отступы для заголовков. Также удалим list-style-type из элементов списка. И установим базовый размер шрифта для элемента body.<br />
+              <span class="code__text">
+                body{<br />
+                  line-height: 1;<br />
+                  font-size: 88%;}<br />
+                h1, h2, h3, h4, h5, h6{<br />
+                  font-size: 100%;<br />
+                  padding: .6em 0;<br />
+                  margin: 0 15px;}<br />
+                ul, ol{<br />
+                  list-style: none;}<br />
+                img{border: 0;}<br />
+              </span>
+              Добавим удобные классы для поплавков:<br />
+              <span class="code__text">
+                .floatLeft{<br />
+                  float: left;<br />
+                  padding: .5em .5em .5em 0;}<br />
+                .floatRight{<br />
+                  float: right;<br />
+                  padding: .5em 0 .5em .5em;}<br />
+              </span>
+            </p>
+            <p>Также можно использовать готовые сбрки для обнуления стилей, загуглить "Reset CSS"</p>
           </div>
         </section>
       </div>

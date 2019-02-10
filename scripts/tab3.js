@@ -70,3 +70,35 @@ function timer1(){
   document.getElementById('testCount').innerHTML = counter1;
   setTimeout("timer1()", 1000);
 }
+//ajax
+function funcBefore(){
+  $("#information").text("Ожидание данных...");
+}
+function funcSuccess(data){
+  $("#information").text(data);
+}
+/*
+$(document.getElementById('ajaxTut')).ready(function(){
+  $("#load").bind("click", function(){
+    $.ajax({
+      url: "contentForAjax.php",
+      type: "POST",
+      data: ({name: 'admin', number: 5}),
+      dataType: "html",
+      beforeSend: funcBefore,
+      success: funcSuccess
+    });
+  });
+});
+$(document.getElementById('ajaxTut2')).ready(function(){
+  $("select[name='country']").bind("change", function(){
+    $.get("contentForAjax.php", {country: $("select[name='country']").val()}, function(data){
+      data = JSON.parse(data);
+      $("select[name='city']").empty();
+      for(var id in data){
+        $("select[name='city']").append($("<option value='" + id "'>" + data[id] + "</option>"));
+      }
+    });
+  });
+});
+*/

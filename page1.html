@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>AlmanacSCSS</title>
+    <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link rel="stylesheet" href="css/main1.css">
+  </head>
+  <body>
+    <header>
+      <div class="head">
+        <img src="images/logo100x100.png" alt="logo">
+        <a href="index.html">CSS</a>
+        <a href="#">SASS</a>
+        <a href="page2.html">Bootstrap</a>
+        <a href="page3.html">JavaScript</a>
+        <a href="page4.html">jQuery</a>
+        <a href="#">ReactJS</a>
+      </div>
+    </header>
+    <div class="tabs">
+      <input type="radio" id="tab1" name="tab-group">
+      <label for="tab1" class="tab-title">Компиляция в CSS</label>
+      <input type="radio" id="tab2" name="tab-group">
+      <label for="tab2" class="tab-title">Синтаксис</label>
+      <input type="radio" id="tab3" name="tab-group">
+      <label for="tab3" class="tab-title">Расширение CSS</label>
+      <input type="radio" id="tab4" name="tab-group">
+      <label for="tab4" class="tab-title">sassScript</label>
+      <input type="radio" id="tab5" name="tab-group">
+      <label for="tab5" class="tab-title">Директивы и правила</label>
+      <input type="radio" id="tab6" name="tab-group">
+      <label for="tab6" class="tab-title">Выражения</label>
+      <input type="radio" id="tab7" name="tab-group">
+      <label for="tab7" class="tab-title">Миксины</label>
+      <div class="content">
+        <section class="tab1">
+          <img src="images/SassLogo.png" alt="logo">
+          <div class="tab-content">
+            <h1>Компиляция в CSS</h1>
+            <p>
+              Для работы с препроцессорами необходимо настроить среду разработки.<br />
+              Gulp и NodeJS связка:<br />
+              В папке проекта открываем командную строку (shift + правая кнопка маши -> командная строка)<br />
+              Сначала в ней инициализируем рабочую среду командой <span class="code__text">npm init</span><br />
+              В процессе выполнения команды дается возможность настроить параметры проекта (можно оставить дефолтные)<br />
+              В результате выполнения команды появится файл <span class="text__red">package.json</span> в котором будут прописаны версии пакетов, используемых в проекте.<br />
+            </p>
+            <p>
+              Далее необходимо установить gulp и gulp-sass в эту же папку командой <span class="code__text">npm i --save-dev gulp gulp-sass</span><br />
+              Команда --save-dev сохраняет версии установленных пакетов в package.json<br />
+            </p>
+            <p>
+              Затем в той же папке создаем файл "gulpfile.js" и запишем в нем:<br />
+              <span class="code__text">var gulp = require('gulp');</span>//подключаем gulp<br />
+              <span class="code__text">var sass = require('gulp-sass');</span>//подключаем sass пакет<br />
+              <span class="code__text">gulp.task('sass', function(){</span>//создаем таск "sass"<br />
+              <span class="code__text">return gulp.src(['sass/**/*.sass', 'sass/**/*.scss'])</span>//берем источник<br />
+              <span class="code__text">.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))</span>//преобразуем sass в CSS<br />
+              <span class="code__text">.pipe(gulp.dest('css'))</span>//выгружаем результат в папку<br />
+              <span class="code__text">});</span><br />
+              <span class="code__text">gulp.task('watch', function(){</span><br />
+              <span class="code__text">gulp.watch(['sass/**/*.sass', 'sass/**/*.scss'], ['sass']);</span>//наблюдение за sass файлами в папке sass<br />
+              <span class="code__text">});</span><br />
+              <span class="code__text">gulp.task('default', ['watch']);</span><br />
+            </p>
+            <p>
+              outputStyle: - свойство задает то как будет выглядеть css файл<br />
+              'expanded' - развернутый CSS<br />
+              'nested' - вложенный (по умолчанию)<br />
+              'compact' - упакованный, компактный вид (селектор и его свойства выводятся в одну строку)<br />
+              'compressed' - сжатый вид CSS
+            </p>
+            <p>
+              Далее с этой же папке необходимо создать подпапку "css" и "sass".<br />
+              В папке "sass" будут находиться исходники, которые затем компилируются в CSS.<br />
+              В папке "css" создаем файл main.css и аналогично файл main.sass в папке "sass"<br />
+              Для того, чтобы код из sass файла перенести с CSS, необходимо в открыть командную строку в папке проекта и ввести простую команду <span class="code__text">gulp</span>
+            </p>
+          </div>
+        </section>
+        <section class="tab2">
+          <img src="images/SassLogo.png" alt="logo">
+          <div class="tab-content">
+            <h1>Синтаксис</h1>
+            <p>
+              Есть два варианта написания - синтаксис sass и синтаксис scss.<br />
+              Синтаксис отступов (sass):<br />
+                <span class="code__text">$font-stack: Helvetica, sans-serif</span><br />
+                <span class="code__text">$primary-color: #333</span><br />
+                <span class="code__text">body</span><br />
+                <span class="code__text">__font: 100% $font-stack</span><br />
+                <span class="code__text">__color: $primary-color</span><br />
+              Синтаксис scss пишется как простой CSS (со скобками и ;), но расширен дополнительными возможностями sass (переменные и миксины)<br />
+                <span class="code__text">$font-stack: Helvetica, sans-serif;</span><br />
+                <span class="code__text">$primary-color: #333;</span><br />
+                <span class="code__text">body{</span><br />
+                <span class="code__text">__font: 100% $font-stack;</span><br />
+                <span class="code__text">__color: $primary-color;</span><br />
+                <span class="code__text">}</span><br />
+                Синтаксис sass подразумевает использование или только табов или только двух пробелов! В случае смешения этих правил компилятор выдаст ошибку!<br />
+                Также систаксисы неявно различаются написанием некоторых функций, надо быть внимательнее при копировании из интернета.
+            </p>
+            <p>
+              Подключить файл scss в sass можно с помощью директивы import:<br />
+              <span class="code__text">@import "файлSCSS"</span>
+            </p>
+          </div>
+        </section>
+        <section class="tab3">
+          <img src="images/SassLogo.png" alt="logo">
+          <div class="tab-content">
+            <h1>Правила вложения</h1>
+            <p>
+              sass позволяет создавать иерархические вложения селекторов:<br />
+              <span class="code__text">#main p</span><br />
+              <span class="code__text">__color: #00ff00</span><br />
+              <span class="code__text">__width: 97%</span><br />
+              <span class="code__text">__.redbox</span><br />
+              <span class="code__text">____background-color: #ff0000</span><br />
+              <span class="code__text">____color: #000000</span><br />
+              Скомпилиованный в CSS этот код будет разделен на 2 сложных селектора:<br />
+              <span class="code__text">#main p{</span><br />
+              <span class="code__text">color: #00ff00;</span><br />
+              <span class="code__text">width: 97%;</span><br />
+              <span class="code__text">}</span><br />
+              <span class="code__text">#main p .redbox{</span><br />
+              <span class="code__text">background-color: #ff0000;</span><br />
+              <span class="code__text">color: #000000;</span><br />
+              <span class="code__text">}</span><br />
+            </p>
+            <h1>Привязка к родительскому селектору</h1>
+            <p>
+              Можно расширить селектор, не создавая нового правила. Для этого используется знак амперсанда (&)<br />
+              Внешне это выглядит как использование дочернего селектора (как выше в примере), но знак & расширяет именно родительский селектор:<br />
+              <span class="code__text">#main</span><br />
+              <span class="code__text">__color: black</span><br />
+              <span class="code__text">__a</span><br />
+              <span class="code__text">____font-weight: bold</span><br />
+              <span class="code__text">____&:hover</span><br />
+              <span class="code__text">______color: red</span><br />
+              В CSS скомпилируется так:<br />
+              <span class="code__text">#main{</span><br />
+              <span class="code__text">color: black;</span><br />
+              <span class="code__text">}</span><br />
+              <span class="code__text">#main a{</span><br />
+              <span class="code__text">font-weight: bold;</span><br />
+              <span class="code__text">}</span><br />
+              <span class="code__text">#main a:hover{</span><br />
+              <span class="code__text">color: red;</span><br />
+              <span class="code__text">}</span><br />
+              Также с помощью амперсанда & можно создавать новые селекторы, добавляя к предыдущим через тире симболы.<br />
+              <span class="code__text">#main</span><br />
+              <span class="code__text">__...</span><br />
+              <span class="code__text">__&-sidebar</span><br />
+              <span class="code__text">__...</span><br />
+              Создаст в CSS два селектора:<br />
+              <span class="code__text">#main{...}</span><br />
+              <span class="code__text">#main-sidebar{...}</span><br />
+            </p>
+            <h1>Вложенные свойства</h1>
+            <p>
+              Селекторы с дефисом (типа margin-top), имеют общий "корень" - margin, что позволяет записывать их так:<br />
+              <span class="code__text">.selector</span><br />
+              <span class="code__text">__margin:</span><br />
+              <span class="code__text">____top: 10px</span><br />
+              <span class="code__text">____bottom: 15px</span><br />
+              <span class="code__text">____left: 20px</span><br />
+              <span class="code__text">____right: 30px</span><br />
+              В CSS скомпилируется как:<br />
+              <span class="code__text">.selector{</span><br />
+              <span class="code__text">margin-top: 10px;</span><br />
+              <span class="code__text">margin-bottom: 15px;</span><br />
+              <span class="code__text">margin-left: 20px;</span><br />
+              <span class="code__text">margin-right: 30px;</span><br />
+              <span class="code__text">}</span><br />
+            </p>
+            <h1>Селекторы - шаблоны</h1>
+            <p>
+              Полезны когда необходимо одинаковые стили писать много раз. Их прописывают в селекторе - шаблоне (начинается с %).<br />
+              Затем с помощью директивы <span class="text__red">@extend</span> селектор - шаблон просто вставляют в любой другой селектор, со всеми его стилями:<br />
+              <span class="code__text">%item-base</span><br />
+              <span class="code__text">__display: inline-block</span><br />
+              <span class="code__text">__transition: all .5s ease</span><br />
+              <span class="code__text">__max-width: 320px</span><br />
+              <span class="code__text">.item-type-one</span><br />
+              <span class="code__text">__@extend %item-base</span>//добавляем шаблон<br />
+              <span class="code__text">__margin-top: 20px</span><br />
+              <span class="code__text">.item-type-two</span><br />
+              <span class="code__text">__@extend %item-base</span>//добавляем шаблон<br />
+              <span class="code__text">__margin-top: 10px</span><br />
+              В CSS скомпилируется как:<br />
+              <span class="code__text">.item-type-one, .item-type-two{</span><br />
+                <span class="code__text">display: inline-block;</span><br />
+                <span class="code__text">transition: all .5s ease;</span><br />
+                <span class="code__text">max-width: 320px;</span><br />
+              <span class="code__text"></span>}<br />
+              <span class="code__text">.item-type-one{</span><br />
+              <span class="code__text">margin-top: 20px;</span><br />
+              <span class="code__text">}</span><br />
+              <span class="code__text">.item-type-two{</span><br />
+                <span class="code__text">margin-top: 10px;</span><br />
+                <span class="code__text">}</span>
+            </p>
+          </div>
+        </section>
+        <section class="tab4">
+          <img src="images/SassLogo.png" alt="logo">
+          <div class="tab-content">
+            <p>
+              SASSScript значительно расширяет возможности SASS за счет использования пользовательских переменных, арифметических и прочих функций.<br />
+              Может быть использован для автоматической генерации новых селекторов и свойств.
+            </p>
+            <h1>Переменные sass</h1>
+            <p>
+              В переменных можно хранить цвета, дефолтные значения и константы. Переменные можно использовать в любом месте sass файла.<br />
+              Переменная создается так: $название: значение<br />
+              <span class="code__text">$accent-color: #ff9910</span>
+            </p>
+            <h1>Операции с числами и строками + интерполяция</h1>
+            <p>
+              sass дает возможность использовать стандартные арифметические операции над числами (+ - * / % < <= > >=).<br />
+              Также есть возможность соединять строки (конкатенация):<br />
+              <span class="code__text">$summ: 10+20/2</span>//переменная хранит значение 20<br />
+              <span class="code__text">...margin: $summ + px</span>//скомпилируется в CSS как 20px (20 + px)<br />
+              Используем переменную как свойство. Это интерполяция (использование переменной в как вставку) пишется <span class="text__red">#{$переменная}</span><br />
+              <span class="code__text">$one: pad</span><br />
+              <span class="code__text">$two: ding</span><br />
+              <span class="code__text">#{$one} + #{$two}: 10px</span>//получится padding: 10px;<br />
+            </p>
+            <h1>Операции с цветами</h1>
+            <p>
+              Цвета в sass можно складывать, вычитать, делить и умножать. Эти операции выполняются для каждого цвета отдельно - красного (#++----), зеленого (#--++--) и синего (#----++).<br />
+              <span class="code__text">$color1: #440201 + #550506</span>//складываются поочередно красный (44+55), зеленый и т.д.<br />
+              Получится цвет #990709.<br />
+              При операции с rgba цветами (rgba(180, 0, 0, 0.75)) последнее значение (насыщенности) должно быть одинаковым у обоих цветов.
+            </p>
+          </div>
+        </section>
+        <section class="tab5">
+          <img src="images/SassLogo.png" alt="logo">
+          <div class="tab-content">
+            <h1>@import</h1>
+            <p>
+              С помощью директивы @import можно импортировать в свой sass код файлы .sass .scss .css<br />
+              Директива @import избирательна синтаксически и следующие записи воспримет как простой CSS и не импортирует файлы:<br />
+              <span class="code__text">@import "foo.css";</span>//не импортирует тк файлы CSS надо импортировать без типа .css<br />
+              <span class="code__text">@import "foo" screen;</span>//не импортирует, тк содержит медиа запрос<br />
+              <span class="code__text">@import "http://foo.com/bar";</span>//не импортирует ссылки<br />
+              <span class="code__text">@import url(foo);</span>//не импортирует через атрибут url<br />
+              А следующие файлы импортируютс правильно:<br />
+              <span class="code__text">@import "media.sass";</span><br />
+              <span class="code__text">@import "media.scss";</span><br />
+              <span class="code__text">@import "media";</span>//тип не указывается если файл тоже обычный CSS<br />
+            </p>
+            <h1>@at-root</h1>
+            <p>
+              Директива @at-root поднимает содержимые в ней правила в корень. Т.е. дочерний селектор прописанный после этой директивы при компиляции перестанет быть дочерним.<br />
+              <span class="code__text">.selector</span><br />
+              <span class="code__text">__margin-top: 10px</span><br />
+              <span class="code__text">__@at-root</span><br />
+              <span class="code__text">____.item</span><br />
+              <span class="code__text">______color: #ccc</span><br />
+              <span class="code__text">__.item</span><br />
+              <span class="code__text">____color: #fff</span><br />
+              После компиляции в CSS класс .item (с color:#ccc) станет отдельным селектором:<br />
+              <span class="code__text">.selector{</span><br />
+              <span class="code__text">margin-top:10px;</span><br />
+              <span class="code__text">}</span><br />
+              <span class="code__text">.item{</span><br />
+              <span class="code__text">color: #ccc;</span><br />
+              <span class="code__text">}</span><br />
+              <span class="code__text">.selector .item{</span><br />
+              <span class="code__text">color: #fff;</span><br />
+              <span class="code__text">}</span><br />
+            </p>
+          </div>
+        </section>
+        <section class="tab6">
+          <img src="images/SassLogo.png" alt="logo">
+          <div class="tab-content">
+            <h1>Директива @if()</h1>
+            <p>
+              sass поддерживает использование выражений и функций для разлчных условий(if), циклов(for) и т.д.<br />
+              @if - директива для создания условий выполнения:<br />
+              <span class="code__text">$var: 5</span><br />
+              <span class="code__text">.selector</span><br />
+              <span class="code__text">__@if #var > 5</span><br />
+              <span class="code__text">____content: 'больше пяти'</span><br />
+              <span class="code__text">__@else if $var <= 5</span><br />
+              <span class="code__text">____content: 'меньше'</span><br />
+              <span class="code__text">__@else</span><br />
+              <span class="code__text">____content: ''</span><br />
+              В CSS для селектора .selector значение content будет "меньше".
+            </p>
+            <h1>Директива @for</h1>
+            <p>
+              @for выводит блок со стилями определенное количество раз.<br />
+              Для этого задается переменная - счетчик и ее рамки инкрементации:<br />
+              <span class="code__text">@for $1 from 1 to 12</span>//вместо to можно through если требуется включительно до 12<br />
+              <span class="code__text">__.item-#{$i}</span>//интерполяция #{} для встраивания переменной<br />
+              <span class="code__text">____color: red</span><br />
+            </p>
+            <h1>Директива @each</h1>
+            <p>
+              Используется если надо пройтись по списку значений (а не просто чисел):<br />
+              <span class="code__text">@each $name in head, content, footer</span><br />
+              <span class="code__text">__.section-#{$name}</span>//интерполяция в селектор<br />
+              <span class="code__text">____background-image: url(img/#{$name}.png)</span>//интерполяция в значение свойства<br />
+              В CSS скомпилируется три разных селектора с разными свойствами:<br />
+              <span class="code__text">.section-head{</span><br />
+              <span class="code__text">background-image: url(img/head.png);</span>//переменная head встроится и в селектор и в свойство благодаря интерполяции<br />
+              <span class="code__text">}</span><br />
+              <span class="code__text">.section-content{</span><br />
+              <span class="code__text">background-image: url(img/content.png);</span>//переменная content встроится и в селектор и в свойство благодаря интерполяции<br />
+              <span class="code__text">}</span><br />
+              <span class="code__text">.section-footer{</span><br />
+              <span class="code__text">background-image: url(img/footer.png);</span>//переменная footer встроится и в селектор и в свойство благодаря интерполяции<br />
+              <span class="code__text">}</span><br />
+            </p>
+            <h1>Директива @while</h1>
+            <p>
+              Циклично выводит блок стилей, пока выражение является true<br />
+              <span class="code__text">$i: 7</span><br />
+              <span class="code__text">@while $i > 0</span><br />
+              <span class="code__text">__.item-#{$i}</span><br />
+              <span class="code__text">____width: 1em * $i</span><br />
+              <span class="code__text">__$i: $i - 3</span><br />
+            </p>
+          </div>
+        </section>
+        <section class="tab7">
+          <img src="images/SassLogo.png" alt="logo">
+          <div class="tab-content">
+            <p>
+            Это блоки sass кода (как шаблоны), которые могут принимать аргументы.<br />
+            Это похоже на функцию, которая принимает аргумент и выдает в зависимости от него стили.<br />
+            Создаем миксин:<br />
+            <span class="code__text">@mixin border($color)</span><br />
+            <span class="code__text">__border: $color 1px solid</span><br />
+            И используем миксин для селектора p:<br />
+            <span class="code__text">p</span><br />
+            <span class="code__text">__@include border(#333)</span><br />
+            В CSS скомпилируется стиль border: #333 1px solid; для селектора p.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

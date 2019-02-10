@@ -1,0 +1,149 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>AlmanachCSS</title>
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link rel="stylesheet" href="css/main4.css">
+  </head>
+  <body onload="timer1()">
+    <header>
+      <div class="head">
+        <img src="images/logo100x100.png" alt="logo">
+        <a href="index.html">CSS</a>
+        <a href="page1.html">SASS</a>
+        <a href="page2.html">Bootstrap</a>
+        <a href="page3.html">JavaScript</a>
+        <a href="page4.html">jQuery</a>
+        <a href="#">ReactJS</a>
+      </div>
+    </header>
+    <div class="tabs">
+    <ul>
+        <li>Синтаксис</li>
+        <li>Выбор селекторов</li>
+        <li>Изменение атрибутов</li>
+    </ul>
+    <div>
+        <div class="tabContent">
+          <div class="content_one">
+            <h1>Синтаксис</h1>
+            <p>
+              JQuery - это библиотека JavaScript, которая фокусируется на его взаимодействие с HTML.<br />
+              Библиотека позволяет легко получить доступ к любому элемету DOM, атрибутам и содержимому.<br />
+              Простое боращение к h1 для изменения цвета текста выгладит так:<br />
+              <span class="important">jQuery("h1").css("color","green");</span><br />
+              Вместо слова jQuery можно написать $ ($("h1").css(...)), такая запись будет полностью идентична.<br />
+              & - это синоним слова jQuery.
+            </p>
+          </div>
+          <div class="content_one">
+            <p>
+              Если CDN подключен не в конце файла (внизу body), то необходимо использовать метод .ready<br />
+              <span class="important">$(document).ready(function(){</span><br />
+                <span class="important1">$("h1").css("color", "green");</span><br />
+                <span class="important">});</span><br />
+              Сокращенный вариант без явного вызова метода .ready объекта document:<br />
+              <span class="important">$(function(){</span><br />
+              <span class="important1">$("h1").css("color", "green");</span><br />
+              <span class="important">});</span>
+            </p>
+          </div>
+          <div class="content_one">
+            <p>
+              Для добавления\изменения текста содержимого элемента, вместо метода .css используется .html<br />
+              <span class="important">$("h1").html("new text");</span>//в h1 будет записано "new text"<br />
+            </p>
+            <p>
+              В следующем примере с помощью кнопок на странице будет появляться и исчезать блок текста.<br />
+              Обращаться к DOM элементам будем по идентификатору (id="") с помощью $('#btn_start').<br />
+              <span class="important">$('#btn_start').click(function(){</span><br />
+              <span class="important1">$('#message')</span>// последующие 6 методов добавляют свойства блоку #message<br />
+              <span class="important2">.html("Lorem ipsum")</span><br />
+              <span class="important2">.css("background-color", "green")</span><br />
+              <span class="important2">.parent()</span><br />
+              <span class="important2">.css("background-color", "#fff4dd")</span><br />
+              <span class="important2">.width(500)</span><br />
+              <span class="important2">.height(80)</span><br />
+              <span class="important">});</span><br />
+              <span class="important">$('#btn_reset').click(function(){</span><br />
+              <span class="important1">location.reload();</span><br />
+              <span class="important">});</span><br />
+            </p>
+            <button id="btn_start">Открыть</button>
+            <button id="btn_reset">Скрыть</button>
+            <div>
+              <div id="message"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="content_one">
+            <h1>Выбор селекторов. Оптимизация выборки.</h1>
+            <p>
+              Доступ к элементу по идентификатору (id):<br />
+              <span class="important">$("#content").css(...);</span><br />
+              Доступ к элементу по атрибуту класс (class):<br />
+              <span class="important">$(".wrapper").html(...);</span><br />
+              Можно комбинировать селекторы в jquery запросе:<br />
+              <span class="important">$("#content .wrapper").css(...);</span><br />
+              <span class="important">$(".box .wrapper").html(...);</span><br />
+              Доступ к элементу по тегу (&lt...&gt):<br />
+              <span class="important">$("span")...;</span><br />
+              Селекторы по тегу можно перечислять через запятую:<br />
+              <span class="important">$("h1,h3")...;</span><br />
+              Вложенные теги (&ltdiv&gt &ltarticle&gt &lt/article&gt &lt/div&gt) можно прописать через пробел. Выберем все теги article внутри div:<br />
+              <span class="important">$("div article")...;</span><br />
+              Есть другой способ выбрать вложенный тег - с помощью метода .find:<br />
+              <span class="important">$("div").find("article")...;</span><br />
+              Доступ к соседнему элементу (вроде как в css). Выберем тег "p", который идет сразу за тегом "h2":<br />
+              <span class="important">$("h2 + p")...;</span><br />
+              Выбор элементов - потомков (определенных или всех вложенных элементов):<br />
+              <span class="important">$("article &gt h2")...</span>// выберет ВСЕ h2 внутри всех article<br />
+              <span class="important">$("article &gt *")...</span>// выберет ВООБЩЕ ВСЕ элементы вложенные в article
+            </p>
+            <p>
+              В jQuery есть два метода похожие на :BEFORE и :AFTER из CSS - это .prev() и .next():<br />
+              Допустим у нас есть div#content, перед ним на том же уровне стоит header, а после него стоит footer:<br />
+              &ltheader&gt &lt/header&gt<br />
+              &ltdiv id="content"&gt &lt/div&gt<br />
+              &ltfooter&gt &lt/footer&gt<br />
+              <span class="important">$("#content").prev().css("...");</span>// выберет элемент header<br />
+              <span class="important">$("#content").next().html("...");</span>// выберет элемент footer<br />
+              Чтобы выбрать ВСЕ элементы, используется *:<br />
+              <span class="important">$("*").css(...);</span>
+            </p>
+          </div>
+          <div class="content_one">
+            <h2>Оптимизация выборки</h2>
+            <p>
+              У нас есть такой запрос:<br />
+              <span class="important">$("#content a.button")...;</span><br />
+              Использование метода .find для выбора вложенных элементов ускорит работу:<br />
+              <span class="important">$("content").find("a.button")...;</span><br />
+              Также удобно разбивать запрос на более мелкие и простые составные части.<br />
+              Для этого используется "контекст". Оптимизируем два следующих запроса:<br />
+              <span class="important">$(".content a.button");</span><br />
+              <span class="important">$(".content h3.title");</span><br />
+              Создадим переменную "content":<br />
+              <span class="important">var $content = $(".content")</span><br />
+              Затем используя переменную находим вложенные элементы:<br />
+              <span class="important">$content.find("a.button");</span><br />
+              <span class="important">$content.find("h3.title");</span>
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="content_one">
+            <h1>Работа с CSS. Изменения атрибутов элемента.</h1>
+            <p>
+              
+            </p>
+          </div>
+        </div>
+    </div>
+</div>
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts/tab4.js"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+/*defaults*/
+body{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /*background-color: #000000;*/
+}
+a{
+  text-decoration: none;
+  font-family: 'Monoton', cursive;
+  color: white;
+}
+header{
+  background-color: #d5890f;
+  border-bottom: 2px solid black;
+}
+/*special*/
+.head{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.head img{
+  height: 20pt;
+}
+.head a{
+  font-size: 20pt;
+}
+.head a:hover{
+  color: black;
+}
+/*JS tabs*/
+.tabs{
+	display: flex;
+  justify-content: flex-start;
+}
+.tabs > div{
+	background-color: white;
+  width: 100%;
+}
+.tabs ul{
+  flex-basis: 100px;
+	margin:0px;
+	padding:0px;
+}
+.tabs ul li{
+	margin:0px;
+	padding:0px;
+	cursor:pointer;
+	display:block;
+	padding: 5px 5px;
+	background:#d5890f;
+	color: white;
+  border-bottom: 2px solid #d6d6d7;
+  border-radius: 0 4px 4px 0;
+}
+.tabs ul li.active, .tabs ul li.active:hover{
+	background: white;
+	color: black;
+}
+.tabs ul li:hover{
+	background:#d6d6d7;
+  color: black;
+}
+/*other*/
+.tabContent{
+  background-color: white;
+  padding: 5px;
+}
+.content_one{
+  border: 3px solid #d5890f;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.important{
+  color: blue;
+  margin-left: 20px;
+}
+.important1{
+  color: blue;
+  margin-left: 30px;
+}
+.important2{
+  color: blue;
+  margin-left: 40px;
+}

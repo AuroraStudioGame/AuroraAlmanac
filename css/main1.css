@@ -1,0 +1,111 @@
+/*defaults*/
+body{
+width: 100%;
+margin: 0;
+padding: 0;
+background-color: #000000;
+}
+a{
+text-decoration: none;
+font-family: 'Monoton', cursive;
+color: #f90000;
+}
+header{
+background-color: #cd689a;
+border-bottom: 2px solid black;
+}
+/*special*/
+.head{
+display: flex;
+align-items: center;
+justify-content: space-around;
+flex-wrap: wrap;
+}
+.head img{
+height: 20pt;
+}
+.head a{
+font-size: 20pt;
+margin-right: 20px;
+}
+.head a:hover{
+color: black;
+}
+/*Tabs main*/
+.tabs{
+  position: relative;
+}
+.tabs input{
+  display: none;
+}
+.tabs input:checked+label{
+  width: 5%;
+  color: black;
+  background-color: white;
+  border-right: none
+  font-size: 14pt;
+}
+.tab-title{
+  background-color: #cd689a;
+  width: 5%;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+  color: #f90000;
+  font-size: 9pt;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  box-shadow: 0 0 5px black;
+}
+.tab-title:hover{
+  color: black;
+}
+input[id="tab1"]:checked ~ .content .tab1,
+input[id="tab2"]:checked ~ .content .tab2,
+input[id="tab3"]:checked ~ .content .tab3,
+input[id="tab4"]:checked ~ .content .tab4,
+input[id="tab5"]:checked ~ .content .tab5,
+input[id="tab6"]:checked ~ .content .tab6,
+input[id="tab7"]:checked ~ .content .tab7{
+  display: block;
+}
+.content{
+  position: absolute;
+  width: auto;
+  top: 0;
+  left: 5%;
+}
+.content section{
+  width: auto;
+  background-color: white;
+  padding: 10px;
+  display: none;
+
+}
+section img{
+  height: 50px;
+  margin-left: 50%;
+}
+.tab-content{
+  background-color: #cd689a;
+  width: 100%;
+  border-radius: 7px;
+  box-shadow: 0 0 5px black;
+  padding: 5px;
+}
+section h1{
+  font-family: 'Staatliches';
+  color: #f90000;
+  font-size: 20pt;
+  text-align: center;
+}
+.text__red{
+  color: #f90000;
+  font-family: 'Staatliches';
+}
+.code__text{
+  color: blue;
+  margin-left: 15px;
+}

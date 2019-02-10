@@ -2,16 +2,46 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>AlmanachBootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AlmanacBootstrap</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
     <link rel="stylesheet" href="css/main2.css">
   </head>
   <body>
     <header>
-      <img src="images/logo100x100.png" alt="logo">
-      <a href="index.html">CSS</a>
-      <a href="page2.html">Bootstrap</a>
-      <a href="page3.html">JavaScript</a>
+      <div class="head">
+        <img src="images/logo100x100.png" alt="logo">
+        <a href="index.html">CSS</a>
+        <a href="page1.html">SASS</a>
+        <a href="page2.html">Bootstrap</a>
+        <a href="page3.html">JavaScript</a>
+        <a href="page4.html">jQuery</a>
+        <a href="#">ReactJS</a>
+      </div>
     </header>
+
+    <div>
+  <!-- Навигация -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Домой</a></li>
+    <li><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Профиль</a></li>
+    <li><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Сообщения</a></li>
+    <li><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Настройки</a></li>
+  </ul>
+  <!-- Содержимое вкладок -->
+  <div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="home">...</div>
+  <div role="tabpanel" class="tab-pane fade" id="profile">...</div>
+  <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
+  <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
+</div>
+
+    <!-- Подключаем jQuery и Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- Подключаем Bootstrap JS -->
+    <script src="scripts/bootstrap.min.js"></script>
+
   </body>
 </html>
