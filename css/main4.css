@@ -76,7 +76,7 @@ header{
 }
 .important{
   color: blue;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .important1{
   color: blue;
@@ -84,5 +84,27 @@ header{
 }
 .important2{
   color: blue;
-  margin-left: 40px;
+  margin-left: 50px;
+}
+.important3{
+  color: blue;
+  margin-left: 70px;
+}
+.content_one a{
+  color: red;
+}
+.fadeOutAnim{
+  height: 50px;
+  width: 100px;
+  background-color: blue;
+}
+.animTut{
+  background-color: yellow;
+  width: 50px;
+  height: 20px;
+}
+.height__test__box{
+  background-color: yellow;
+  border-radius: 5px;
+  padding: 10px;
 }

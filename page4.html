@@ -22,6 +22,9 @@
         <li>Синтаксис</li>
         <li>Выбор селекторов</li>
         <li>Изменение атрибутов</li>
+        <li>События</li>
+        <li>Анимация</li>
+        <li>Манипуляции с DOM</li>
     </ul>
     <div>
         <div class="tabContent">
@@ -136,7 +139,307 @@
           <div class="content_one">
             <h1>Работа с CSS. Изменения атрибутов элемента.</h1>
             <p>
-              
+              Для изменения стилей элементов используется метод .css(). Свойство\значение можно задавать через запятую или двоеточие(:).<br />
+              <span class="important">#(".content").css("background-color", "green");</span><br />
+              Чтобы за один запрос установить несколько стилей используется {} и свойства перечисляются через запятую:<br />
+              <span class="important">$(.box).css({'color':'red', 'font-size':'12px', 'margin-left':'50px'})</span><br />
+              Значение свойств ('12px') необходимо указывать в кавычках всегда, но сами свойства можно писать без кавычек, при условии что тире (-) не ставится и следующее словоначинается сразу и с заглавной буквы (background-color будет backgroundColor):<br />
+              <span class="important">$(.box).css({color:'red', fontSize:'12px', marginLeft:'50px'})</span><br />
+            </p>
+            <p>
+              Также манипулировать CSS можно функцией обратного вызова (значение свойства задается функцией):<br />
+              <span class="important">$("#content").css('height', function(i, value){</span><br />
+                <span class="important1">return parseFloat(value)*1.2;</span><br />
+                <span class="important">})</span>
+            </p>
+          </div>
+          <div class="content_one">
+            <h2>Манипуляции с классами</h2>
+            <p>
+              Метод .addClass() позволяет добавить атрибут класс какому-либо элементу:<br />
+              <span class="important">$("#box").addClass('wrapper');</span><br />
+              Проверить причастность элемента к какому-либо классу можно методом .hasClass.<br />
+              При добавлении класса также можно использовать функции обратного вызова:<br />
+              <span class="important">$("#content").addClass(index, function(...){ return className;...})</span><br />
+              Удаление атрибута класс у элемента производится методом .removeClass()<br />
+              <span class="important">$("#content").removeClass('box');</span><br />
+              .removeClass часто используют для создания выпадающих меню.<br />
+              Переключение класса производится методом .toggle()<br />
+              <span class="important">$("h2").toggle();</span>//Элемент исчезнет со страницы (display: none)
+            </p>
+          </div>
+          <div class="content_one">
+            <h2>Изменение других атрибутов элементов</h2>
+            <p>
+              <span class="important">attr(attrName)</span> - получаем значение атрибута (например для использования в функции)<br />
+              <span class="important">attr(attrName, attrValue)</span> - устанавливаем значение атрибута.<br />
+              <span class="important">removeattr(attrName)</span> - удаляем атрибут.<br />
+              Пример: получим альтернативное значение картинки (атрибут alt у img):<br />
+              <span class="important">var altText = $('img').attr('alt');</span>// в переменную запишется значение атрибута alt (="вот это")<br />
+              <span class="important">$('img').attr('src','../images/logo.png');</span>//изменяем атрибут src картинки
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="content_one">
+            <h1>События</h1>
+            <p>
+              Событие - это любое действие пользователя (ввод данных, пролистывание страницы, клик мышки).<br />
+              Ссылка на справочник всех событий jQuery: <a href="https://www.youtube.com/redirect?q=http%3A%2F%2Fjquery.page2page.ru%2Findex.php5%2F%25D0%25A1%25D0%25BE%25D0%25B1%25D1%258B%25D1%2582%25D0%25B8%25D1%258F&redir_token=VdgnJW843cEvNocT9KmDz-NIQYR8MTU1MDA1NjExMEAxNTQ5OTY5NzEw&stzid=UgiOhNa0oROGJngCoAEC&event=comments">События</a><br />
+              Пример: клик по ссылке вызовет alert(), но не переход на страницу ссылки:<br />
+              <span class="important">$("a").click(function(event){</span><br />
+                <span class="important1">alert("Hello!");</span><br />
+                <span class="important1">event.preventDefault();</span>//предотвратит переход на другую страницу<br />
+                <span class="important">})</span><br />
+              Если такое же событие применить к блоку, в котором расположена эта ссылка, то всплывет два alert() при нажатии на нее.<br />
+              Это происходит потому что в DOM события начинают обрабатываться от родительского элемента к дочернему.<br />
+              Чтобы событие вызывалось только дочерним элементом (ссылкой, но не блоком с таким же событием) используется метод event.stopPropagation();<br />
+              <span class="important">$("a").click(function(event){</span><br />
+                <span class="important1">alert("Hello!");</span><br />
+                <span class="important1">event.preventDefault();</span>//предотвратит переход на другую страницу<br />
+                <span class="important1">event.stopPropagation();</span>//теперь родительский DOM элемент не вызовет свой event вместе с дочерним<br />
+                <span class="important">})</span><br />
+                Для сокращения можно вызвать сразу два эти метода (.preventDefault() и stopPropagation()) с помошью:<br />
+                <span class="important">$("a").click(function(event){</span><br />
+                  <span class="important1">alert("Hello!");</span><br />
+                  <span class="important1">return false;</span>//заменит два метода (.preventDefault() и stopPropagation()) сразу<br />
+                  <span class="important">})</span><br />
+            </p>
+          </div>
+          <div class="content_one">
+            <input type="text" name="quantity" id="quantity" placeholder="Пиши сюда)">
+            <span id="msg"></span>
+            <p>
+              В этом примере введенный пользователем в инпут символ дублируется в спан. В HTML имеем:<br />
+              <span class="important">&ltinput type="text" name="quantity" value="quantity"&gt</span><br />
+              <span class="important">&ltspan id="msg"&gt&lt/span&gt</span><br />
+              В скрипте добавим событие .keyup() нашему инпуту, которое реагирует на нажатие любой клавиши клавиатуры:<br />
+              <span class="important">$('#quantity').keyup(function(){</span><br />
+                <span class="important1">let Value = $(this).val();</span><br />
+                <span class="important1">$('#msg').empty();</span><br />
+                <span class="important1">$('#msg').text(Value);</span><br />
+                <span class="important">})</span><br />
+                Введенный символ сохраним в переменную Value с помощью метода .val() и запишем его в спан методом .text(Value).
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="content_one">
+            <h1>Анимация</h1>
+            <h2>.Hide() .Show()</h2>
+            <p>
+              Функции .hide() .show() соответственно скрывают и отображают элемент.<br />
+              Эти функции оперируют CSS свойством display и переключают его из текущего состояния в "none".<br />
+              <span class="important">$(".anim").hide(500);</span><br />
+              Анимация задается в качестве первого параметра этих функций (slow или fast) или можно указать в миллисекундах (1000 = 1сек).<br />
+              slow = 600мс, fast = 200мс<br />
+              <span class="important">$(".anim").show("fast")</span>
+            </p>
+            <button type="button" name="button1" id="but1">hide</button>
+            <button type="button" name="button2" id="but2">show</button>
+            <p id="par1" style="color: red;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>
+              Вторым параметром может быть callback функция. Для примера при скрытии абзаца вызовем alert:<br />
+              <span class="important">$(".anim").hide('slow', function(){</span><br />
+                <span class="important1">alert("Иссчезло!");</span><br />
+                <span class="important">})</span>
+            </p>
+          </div>
+          <div class="content_one">
+            <h2>.SlideUp() .SlideDown() .slideToggle()</h2>
+            <p>
+              Поведение этих функций схоже с предыдущими, но эти будут затрагивать только высоту элементов (height).<br />
+              <span class="important">$('#but4').click(function(){</span><br />
+              <span class="important1">$('#par2').slideUp("slow");</span><br />
+              <span class="important">})</span><br />
+            </p>
+            <button type="button" name="button4" id="but4">slideUp</button>
+            <button type="button" name="button3" id="but3">slideDown</button>
+            <p id="par2" style="display: none; color: red;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor corporis dolore ipsam atque id quis tempore dolorem consectetur nam enim saepe numquam laboriosam, tempora eveniet quibusdam minus magnam, reiciendis deserunt minima, nulla illo. Eaque quia aliquid accusamus earum illo tempora consequatur cupiditate rerum voluptas aut deleniti dolorem, molestias doloremque voluptate.</p>
+            <p>
+              Метод .slideToggle() меняет slideUp на slideDown и обратно. Это удобно если обе эти функции надо применить к одному элементу,<br />
+              Например чтобы по нажатию на заголовок (h2) абзац (p) под ним иссчезал или появлялся:<br />
+              <span class="important">function changeClass(){</span><br />
+              <span class="important1">$(this).prev().toggleClass('active');</span><br />
+              <span class="important1">}</span><br />
+              <span class="important1">$(function(){</span><br />
+              <span class="important2">$('div h2').click(function(){</span><br />
+              <span class="important3">$(this).next().slideToggle();</span><br />
+              <span class="important3">$(this).toggleClass('active');</span><br />
+              <span class="important2">});</span><br />
+              <span class="important1">});</span><br />
+            </p>
+          </div>
+          <div class="content_one">
+            <h2>.fadeIn() .fadeOut() .fadeToggle() ,fadeTo()</h2>
+            <p>
+              Эти методы оперируют CSS свойством "opasity" для анимации.<br />
+              fadeOut создает эффект выцветания с заданным интервалом (slow, fast или в миллисекундах 2000) в конце которого элемент иссчезнет со страницы.<br />
+              <span class="important">$(".fadeOutAnim").click(function(){</span><br />
+              <span class="important1">$(this).fadeOut(2000);</span><br />
+              <span class="important">});</span><br />
+            </p>
+            <div class="fadeOutAnim">Нажми на меня</div>
+            <p>
+              fadeIn() выполняет обратное действие.<br />
+              А .fadeTo() изменяет opacity до указанного значения (вторым параметром после скорости).<br />
+              <span class="important">$(...).fadeTo('slow', 0.3);</span>
+            </p>
+          </div>
+          <div class="content_one">
+            <h2>.animate()</h2>
+            <p>
+              Все анимации в jQuery крутятся вокруг метода .animate().<br />
+              Данный метод берет одно или несколько свойств CSS и меняет его за одно или несколько итераций.<br />
+              Количество итераций зависит от времени, но не реже одной итерации в 13мс.<br />
+              Реализуем функции fadeIn() и fadeOut() с помощью animate():<br />
+              <span class="important">$(".animTut").animate({</span><br />
+                <span class="important1">'opacity' : '0.5',</span>//если указать после : 'hide' получится fadeOut, если 'show' то fadeIn<br />
+                <span class="important1">'height' : '50px',</span><br />
+                <span class="important1">'width' : '100px'</span>//через запятую прописываем еще свойства для изменения размера блока<br />
+                <span class="important">})</span>
+            </p>
+            <div class="animTut">Нажми на меня</div>
+            <p>
+              Очередность анимации можно менять несколько раз прописывая элементу метод .animate(), причем вторым параметром задавая очередь.<br />
+              <span class="important">$(...).animate({'height':'+=50px'})</span><br />
+              <span class="important2">.animate({'width':'-=25px'},{queue:false})</span>//queue обеспечит параллельный запуск анимации<br />
+              Метод .stop() позволяет остановить выполнение последующих анимаций в очереди:<br />
+              <span class="important">$(...).animate({'height':'+=50px'})</span><br />
+              <span class="important2">.stop();</span>// проиграется только первая height анимация<br />
+              <span class="important2">.animate({'width':'-=25px'},{queue:false})</span>
+            </p>
+            <p>
+              Для предотвращения всей анимации на странице (для отладки например) используется такая конструкция:<br />
+              <span class="important">jQuery.fx.off = true;</span>
+            </p>
+          </div>
+        </div>
+        <div class="tabContent">
+          <div class="content_one">
+            <h1>After Before Append</h1>
+            <p>
+              Эти методы применяются для удаления или добавления элементов в DOM.<br />
+              Метод appendTo() добавит элемент в указанное место на странице:<br />
+              <span class="important">var $myDiv = $('&ltdiv id="my" class="page"&gt Hello! &lt/div&gt').appendTo("body");</span>//добавит div  атрибутами прямо в конец body<br />
+              Использование этого метода увеличит скорость загрузки, тк он обрабатывается методом parseHTML.<br />
+              Чтобы ускорить загрузку, атрибуты элемента можно передавать вторым параметром:<br />
+              <span class="important">var $myDiv = $('&ltdiv&gt Hello! &lt/div&gt', {'id':'my', 'class':'page'}).appendTo("#content");</span><br />
+              Также ускорить загрузку может использование метода attr() для указания в нем атрибутов:<br />
+              <span class="important">var $myDiv = $('&ltdiv&gt Hello! &lt/div&gt').attr({'id':'my', 'class':'page'}).appendTo("#content");</span>
+            </p>
+            <p>
+              На чистом JS такое же действие выполняется не менее легко:<br />
+              <span class="important">var myDiv = document.createElement('div');</span><br />
+              <span class="important1">myDiv.id = "my";</span><br />
+              <span class="important1">myDiv.className = "page";</span>
+            </p>
+            <p>
+              .append() вставляет контент в конце выбранного элемента (в конце блока).<br />
+              <span class="important">$("p").append("&ltspan&gtLoremIpsum&lt/span&gt");</span><br />
+              Метод .prepend() и .prependTo работают аналогично append, но вставляют контент в НАЧАЛО блока.
+            </p>
+          </div>
+          <div class="content_one">
+            <h2>AFTER и BEFORE</h2>
+            <p>
+              .after() вставляет контент после выбранного элемента(ов).<br />
+              <span class="important">$("p").after("&lthr/&gt");</span>//поставит тег горизонтальной линии после ВСЕХ элементов "p"<br />
+              Метод .insertAfter() позволяет поменять местами элементы в параметрах:<br />
+              <span class="important">$("&lthr/&gt").insertAfter("p");</span><br />
+            </p>
+            <p>
+              .before() вставляет контент перед выбранным элементом(ми).<br />
+              Аналогично работает и .insertBefore() - контент, метод, элемент перед которым вставлять:<br />
+              <span class="important">$("$imgLogo").insertBefore(".header_menu");</span>
+            </p>
+          </div>
+          <div class="content_one">
+            <h1>.replace() .wrap() .cline() .detach()</h1>
+            <p>
+              Метод .replaceWith() заменяет выбранные элементы новыми:<br />
+              <span class="important">$(".box1").replaceWith("&lth2&gtNew element&lt/h2&gt");</span>// заменит div.box1 на элемент h2<br />
+              .replaceAll() делает тоже самое для всех выбранных элементов, но параметры меняются местами:<br />
+              <span class="important">$("&lth2&gtNew element&lt/h2&gt").replaceAll(".box");</span>
+            </p>
+            <p>
+              Метод .wrap() оборачивает выбранный элемент внутрь другого элемента (&ltНовЭл&gt &ltСтарЭл&gt &lt/НовЭл&gt):<br />
+              <span class="important">$(".box1").wrap("&ltdiv class='new'&gt Текст &lt/div&gt");</span>//элемент .box1 окажется внитри элемента .new<br />
+              .wrapAll() если применить в этом же примере (если у нас несколько .box на одном уровне), то он обернет их все в .new<br />
+              .wrapInner() поступает по другому, он создает блок внутри выбранного блока, не трогая его контент:<br />
+              <span class="important">$(".box1").wrapInner("&ltdiv class='new'&gt Текст &lt/div&gt");</span><br />
+              Получится так:<br />
+              <span class="important">&ltdiv class="box1&gt"</span><br />
+              <span class="important1">&ltdiv class="new"&gt Текст &lt/div&gt</span><br />
+              <span class="important1">Контент который был в box1</span><br />
+              <span class="important">&lt/div&gt</span><br />
+              Также есть метод .unwrap() который удаляет родительский элемент выбранного элемента.
+            </p>
+            <p>
+              Метод .clone() копирует целый элемент для дальнейшей его вставки в DOM.<br />
+              Он также позволяет скопировать и обработчики событий элемента.<br />
+              <span class="important">$(".first").clone().appendTo(".third");</span>//скопирует элемент .first и вставит в конец элемента .third
+            </p>
+            <p>
+              Метод .detach() удаляет элемент из DOM, но при этом сохраняет все данные о нем в jQuery.<br />
+              Его следует использовать если надо удалить элемент, а потом вернуть его обратно при определенных условиях.<br />
+              <span class="important">var par;</span>//в переменную сохраним блок .detach__content<br />
+              <span class="important">$("#btn__detach").click(function(){</span><br />
+              <span class="important1">if(par){</span><br />
+              <span class="important2">par.appendTo(".detach__test__box");</span><br />
+              <span class="important2">par = null;</span><br />
+              <span class="important1">} else{</span><br />
+              <span class="important2">par = $(".detach__content").detach();</span><br />
+              <span class="important1">}</span><br />
+              <span class="important">});</span><br />
+            </p>
+            <div class="detach__test__box">
+              <p class="detach__content" style="background-color: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <button type="button" id="btn__detach">Attach\detach</button>
+            </div>
+            <p>
+              Метод .empty() удаляет контент и дочерние элементы выбранного блока.<br />
+              Метод .remove() удаляет выбранный элемент из DOM навсегда.
+            </p>
+          </div>
+          <div class="content_one">
+            <h1>.Offset, Position, Height, innerHeight</h1>
+            <p>
+              Метод .offset() позволяет вернуть позицию элемента относительно документа (значения left и top в пикселях):<br />
+              <span class="important">var p = $(".first");</span>//выбранный элемент сохраним в переменную<br />
+              <span class="important">var offset = p.offset();</span>//данные о прложении .first сохраним в другую переменную<br />
+              <span class="important">p.html("Слева: " + offset.left + ", Сверху: " + offet.top);</span>//запишем в наш .first элемент данные о его же положении<br />
+              Также можно задать свои координаты оложения для элемента:<br />
+              <span class="important">$(".box").offset({top:100,left:50});</span><br />
+              Элементу .box добавится аблолютное позиционирование и расположение будет как указано в top и left.
+            </p>
+            <p>
+              Метод .position() действует похоже, но вернет позицию выбранного элемента относительно его родительского элемента (не страницы).<br />
+              Метод .height() возвращает высоту элемента за вычетом отступов и границ.<br />
+              Если в выборке несколько элементов, то он вернет высоту только первого, также возвращает он значение без единиц измерения.<br />
+              В примере мы отобразим высоты объектов (p, document и window) в блоке ниже:<br />
+              <span class="important">function showHeight(element, height){</span><br />
+              <span class="important1">$(".height__test__p").text("Height of the " +element+" is "+height);</span><br />
+              <span class="important">};</span><br />
+              <span class="important">$("#getP").click(function(){</span><br />
+              <span class="important1">showHeight("paragraph", $(".height__test__p").height());</span><br />
+              <span class="important">});</span><br />
+              <span class="important">$("#getD").click(function(){</span><br />
+              <span class="important1">showHeight("document", $(document).height());</span><br />
+              <span class="important">});</span><br />
+              <span class="important">$("#getW").click(function(){</span><br />
+              <span class="important1">showHeight("window", $(window).height());</span><br />
+              <span class="important">});</span>
+            </p>
+            <div class="height__test__box">
+              &nbsp;
+              <p class="height__test__p">Я просто параграф внутри блока .height__test__box, нажми на кнопку чтобы узнать мою высоту.</p>
+              <button id="getP">Paragraph</button>
+              <button id="getD">Document</button>
+              <button id="getW">Window</button>
+            </div>
+            <p>
+              Метод .innerHeight() вернет высоту элемента включая его padding.<br />
             </p>
           </div>
         </div>

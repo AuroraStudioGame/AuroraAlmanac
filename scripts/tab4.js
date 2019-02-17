@@ -41,4 +41,54 @@ $(document).ready(function(){
 	$('#btn_reset').click(function(){
 		location.reload();
 	});
+	$('#quantity').keyup(function(){
+		let Value = $(this).val();
+		$('#msg').empty();
+		$('#msg').text(Value);
+	});
+	$('#but1').click(function(){
+		$('#par1').hide("fast");
+		alert("Иссчезло!");
+	});
+	$('#but2').click(function(){
+		$('#par1').show("slow");
+	});
+	$('#but3').click(function(){
+		$('#par2').slideDown("slow");
+	});
+	$('#but4').click(function(){
+		$('#par2').slideUp("slow");
+	});
+	$(".fadeOutAnim").click(function(){
+		$(this).fadeOut(2000);
+	});
+	$(".animTut").click(function(){
+		$(this).animate({
+			'opacity' : '0.5',
+			'height' : '50px',
+			'width' : '100px'
+		});
+	});
+	var par;
+	$("#btn__detach").click(function(){
+		if(par){
+			par.appendTo(".detach__test__box");
+			par = null;
+		} else{
+			par = $(".detach__content").detach();
+		}
+	});
+
+	function showHeight(element, height){
+		$(".height__test__p").text("Height of the " +element+" is "+height);
+	};
+	$("#getP").click(function(){
+		showHeight("paragraph", $(".height__test__p").height());
+	});
+	$("#getD").click(function(){
+		showHeight("document", $(document).height());
+	});
+	$("#getW").click(function(){
+		showHeight("window", $(window).height());
+	});
 })(jQuery);
